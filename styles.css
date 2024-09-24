@@ -1,0 +1,39 @@
+* {
+    border: solid black 1px;
+}
+
+header ul, footer ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+#links ul {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#links a {
+    display: inline-block;
+    width: 2vw;
+    height: 2vw;
+}
+
+#links img {
+    height: 2vw;
+}
+
+#main {
+    display: flex;
+}
+
+#started_games {
+    flex: 0 1 40%;
+}
+
+#search_games {
+    flex: 0 1 40%;
+}
+
+#profile {
+    flex: 0 1 20%;
+}
