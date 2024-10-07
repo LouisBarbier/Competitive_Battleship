@@ -29,7 +29,7 @@
 
     How many levels of headings are necessary?
         The only page that will contain more than 1 or 0 headings will be
-        tutorial.html that might contain 3 levels of headings :
+        tutorial.php that might contain 3 levels of headings :
             - The title of the page
             - Another level for the main titles (ex : How to play, The score system, etc...)
             - Another for secondary titles (ex : the different chapters of How to play)
@@ -60,28 +60,28 @@
                 <!--
                     This button is accessible only if we are connected and if we are an admin
                 -->
-                <a href="admin.html" target="_self">Admin Page</a>
+                <a href="admin.php" target="_self">Admin Page</a>
             </li>
-            <li id="tutorial"><a href="tutorial.html" target="_self">Tutorial</a></li>
+            <li id="tutorial"><a href="tutorial.php" target="_self">Tutorial</a></li>
             <li id="account">
                 <!--This <li> show the editAccount button only if we are already connected
                     If we are not, then it show the sign in and sign up buttons
                 -->
-                <a href="editAccount.html" target="_self">Edit Account</a>
+                <a href="editAccount.php" target="_self">Edit Account</a>
             </li>
         </ul>
     </header>
 
     <div id="main">
-        <div id="started_games"><a href="battle.html" target="_self">Continue!</a></div>
-        <div id="search_games"><a href="matchmaking.html" target="_self">Battle!</a></div>
+        <div id="started_games"><a href="battle.php" target="_self">Continue!</a></div>
+        <div id="search_games"><a href="matchmaking.php" target="_self">Battle!</a></div>
         <div id="profile"></div>  
      </div>
 
     <footer>
         <ul>
             <li id="copyright">&copy; 2024 Competitive Battleship</li>
-            <li id="terms"><a href="terms.html">Terms</a></li>
+            <li id="terms"><a href="terms.php">Terms</a></li>
             <li id="links">
                 <ul>
                     <li><a href="https://www.facebook.com/juniata" title="Facebook" target="_blank"><img src="images/logos/facebook.svg" alt="Facebook Logo"></a></li>

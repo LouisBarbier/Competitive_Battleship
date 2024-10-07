@@ -8,7 +8,7 @@
 </head>
 <body>
     <!--Here players will be wait while the game try to get them against the closest player (in term of rank)
-    Once a player is found the game will ask them to confirm the battle. Once confirmed the battle will start (they will be both redirected to battle.html).
+    Once a player is found the game will ask them to confirm the battle. Once confirmed the battle will start (they will be both redirected to battle.php).
     -->
     <header>
         <ul>
@@ -21,7 +21,7 @@
         </ul>
     </header>
 
-    <a href="battle.html">battle found</a>
-    <a href="index.html" target="_self">Cancel</a>
+    <a href="battle.php">battle found</a>
+    <a href="index.php" target="_self">Cancel</a>
 </body>
 </html>
