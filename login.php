@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in - Competitive Battleship</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
 </head>
-<body>
+<body class="text-center">
     <!--Here players and admins will be able to log in (depending of if they are players or admins they will not have access to the same pages afterward)-->
+    <form class="form-signin">
+        <img class="mb-4" src="images/logos/competitive_battleship.svg" alt="Logo" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Sign in to<br>Competitive Battleship</h1>
+
+        <label for="user_id">ID or Email address</label>
+        <input type="text" id="user_id" class="form-control" placeholder="ID or Email address" required autofocus>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
+
+        <button id="submit-but" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+        <br>
+        <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
+    </form>
+  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

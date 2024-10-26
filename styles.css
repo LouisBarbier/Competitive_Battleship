@@ -1,11 +1,22 @@
-html {
+body {
     background-color: #e3e3e1;
+}
+header {
+    position: absolute;
+    top: 0%; left: 0%;
+    width: 100%;
 }
 
 main {
     width: 100%; height: 100%;
     display: flex;
-    padding: auto;
+    vertical-align: middle;
+}
+
+footer {
+    position: absolute;
+    bottom: 0%; left: 0%;
+    width: 100%;
 }
 
 a {
@@ -13,23 +24,9 @@ a {
     color: black;
 }
 
-header ul, footer ul {
-    display: flex;
-    justify-content: space-around;
-}
-
-#links ul {
-    display: grid;
-    grid-template-columns: auto auto;
-}
-
 #links a {
     display: inline-block;
     width: 2vw;
-    height: 2vw;
-}
-
-#links img {
     height: 2vw;
 }
 

@@ -1,0 +1,12 @@
+<svg width="242" height="242" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden">
+    <g transform="translate(-519 -239)"><rect x="527" y="247" width="226" height="226" fill="#EFF6EA"/>
+        <rect x="602" y="398" width="151" height="75" fill="#9BC696"/>
+        <rect x="678" y="247" width="75" height="151" fill="#787C7E"/>
+        <rect x="527" y="247" width="75" height="75" fill="#787C7E"/>
+        <path d="M602.5 247.5 602.5 474.272" stroke="#385723" stroke-width="13.3333" stroke-miterlimit="8" fill="#E7E6E6" fill-rule="evenodd"/>
+        <path d="M678.5 247.5 678.5 474.272" stroke="#385723" stroke-width="13.3333" stroke-miterlimit="8" fill="#E7E6E6" fill-rule="evenodd"/>
+        <path d="M0 0 226.772 0.000104987" stroke="#385723" stroke-width="13.3333" stroke-miterlimit="8" fill="#E7E6E6" fill-rule="evenodd" transform="matrix(-1 0 0 1 754.272 322.5)"/>
+        <path d="M0 0 226.772 0.000104987" stroke="#385723" stroke-width="13.3333" stroke-miterlimit="8" fill="#E7E6E6" fill-rule="evenodd" transform="matrix(-1 0 0 1 754.272 398.5)"/>
+        <rect x="527.5" y="247.5" width="226" height="226" stroke="#385723" stroke-width="13.3333" stroke-miterlimit="8" fill="none"/>
+    </g>
+</svg>

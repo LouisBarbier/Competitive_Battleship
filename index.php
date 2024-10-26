@@ -6,8 +6,8 @@
     <meta name="author" content="Louis Barbier">
     <meta name="description" content="Play Battleship Against Other">
     <title>Competitive Battleship</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!--
@@ -54,9 +54,9 @@
     
     -->
 
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <header class="d-flex flex-wrap justify-content-center py-4 mb-4 border-bottom">
         <a href="#" target="_self" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <img src="" alt="Logo" class="bi me-2" width="40" height="32">
+            <img src="images/logos/competitive_battleship.svg" alt="Logo" class="bi me-2" width="40" height="40">
             <span class="fs-4">Competitive Battleship</span>
         </a>
 
@@ -88,10 +88,10 @@
         <div id="profile"></div>  
     </main>
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
             <a href="#" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <img src="" alt="Logo" class="bi" width="30" height="24">
+                <img src="images/logos/competitive_battleship.svg" alt="Logo" class="bi" width="30" height="30">
             </a>
             <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Competitive Battleship</span>
         </div>
