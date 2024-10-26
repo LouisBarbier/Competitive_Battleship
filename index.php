@@ -7,6 +7,7 @@
     <meta name="description" content="Play Battleship Against Other">
     <title>Competitive Battleship</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
     <!--
@@ -53,43 +54,68 @@
     
     -->
 
-    <header>
-        <ul>
-            <li id="logo">LOGO</li>
-            <li id="admin">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="#" target="_self" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="" alt="Logo" class="bi me-2" width="40" height="32">
+            <span class="fs-4">Competitive Battleship</span>
+        </a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" target="_self" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
                 <!--
                     This button is accessible only if we are connected and if we are an admin
                 -->
-                <a href="admin.php" target="_self">Admin Page</a>
+                <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
             </li>
-            <li id="tutorial"><a href="tutorial.php" target="_self">Tutorial</a></li>
-            <li id="account">
+            <li class="nav-item">
+                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
+            </li>
+            <li class="nav-item">
                 <!--This <li> show the editAccount button only if we are already connected
                     If we are not, then it show the sign in and sign up buttons
                 -->
-                <a href="editAccount.php" target="_self">Edit Account</a>
+                <a href="editAccount.php" class="nav-link" target="_self">Edit Account</a>
             </li>
         </ul>
     </header>
 
-    <div id="main">
+    <main>
         <div id="started_games"><a href="battle.php" target="_self">Continue!</a></div>
         <div id="search_games"><a href="matchmaking.php" target="_self">Battle!</a></div>
         <div id="profile"></div>  
-     </div>
+    </main>
 
-    <footer>
-        <ul>
-            <li id="copyright">&copy; 2024 Competitive Battleship</li>
-            <li id="terms"><a href="terms.php">Terms</a></li>
-            <li id="links">
-                <ul>
-                    <li><a href="https://www.facebook.com/juniata" title="Facebook" target="_blank"><img src="images/logos/facebook.svg" alt="Facebook Logo"></a></li>
-                    <li><a href="https://twitter.com/juniatacollege" title="Twitter / X" target="_blank"><img src="images/logos/x.svg" alt="Twitter / X Logo"></a></li>
-                    <li><a href="https://github.com/LouisBarbier/Competitive_Battleship" title="GitHub" target="_blank"><img src="images/logos/github.svg" alt="GitHub Logo"></a></li>
-                </ul>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="#" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <img src="" alt="Logo" class="bi" width="30" height="24">
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Competitive Battleship</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3">
+                <a class="text-body-secondary" href="https://www.facebook.com/juniata" title="Facebook" target="_blank">
+                    <img class="bi" width="24" height="24" src="images/logos/facebook.svg" alt="Facebook Logo">
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-body-secondary" href="https://twitter.com/juniatacollege" title="Twitter / X" target="_blank">
+                    <img class="bi" width="24" height="24" src="images/logos/x.svg" alt="Twitter / X Logo">
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-body-secondary" href="https://github.com/LouisBarbier/Competitive_Battleship" title="GitHub" target="_blank">
+                    <img class="bi" width="24" height="24" src="images/logos/github.svg" alt="GitHub Logo">
+                </a>
             </li>
         </ul>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
