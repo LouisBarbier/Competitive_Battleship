@@ -1,10 +1,12 @@
 body {
     background-color: #e3e3e1;
 }
+
 header {
     position: absolute;
     top: 0%; left: 0%;
     width: 100%;
+    padding-left: 1rem; padding-right: 1rem;
 }
 
 main {
@@ -17,6 +19,7 @@ footer {
     position: absolute;
     bottom: 0%; left: 0%;
     width: 100%;
+    padding-left: 1rem; padding-right: 1rem;
 }
 
 a {
