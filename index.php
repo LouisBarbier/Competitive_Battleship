@@ -74,10 +74,13 @@
                 <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
-                <!--This <li> show the editAccount button only if we are already connected
-                    If we are not, then it show the sign in and sign up buttons
-                -->
-                <a href="editAccount.php" class="nav-link" target="_self">Edit Account</a>
+                <div class="container">
+                    <!--This <li> show the editAccount button only if we are already connected
+                        If we are not, then it show the sign in and sign up buttons
+                    -->
+                    <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
+                    <a href="#" class="nav-link" target="_self">Sign Up</a>
+                </div>
             </li>
         </ul>
     </header>
@@ -115,6 +118,7 @@
         </ul>
     </footer>
 
+    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

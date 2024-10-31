@@ -21,10 +21,10 @@ document.getElementById('submit-but').addEventListener('click', function(){
             // console.log(dataJSON);
 
             if (dataJSON.result.valid == '1') {
-                alert("Credential valid!");
-                console.log(dataJSON.result.person);
+                window.opener.setUser(dataJSON.result.person);
             } else {
-                alert("Credential invalid!");
+                document.getElementById("error-msg").style.display = 'block';
+                document.getElementById("error-msg").style.visibility = 'visible';
             }
             
         })

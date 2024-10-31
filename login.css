@@ -29,7 +29,27 @@ input {
     border-top-right-radius: 0;
 }
 
+#error-msg {
+    display: none; visibility: hidden;
+}
+
 #submit-but {
+    width: 100%;
+    border: none;
+    background-color: #70AD47;
+    color: white;
+    font-size: 1rem;
+}
+
+#submit-but:hover {
+    background-color: #689e45;
+}
+
+#submit-but:active {
+    background-color: #5f8e3f;
+}
+
+#copyright {
     position: relative;
-    top: 20px;
+    bottom: 40px;
 }

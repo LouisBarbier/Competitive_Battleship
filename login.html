@@ -14,6 +14,8 @@
         <img class="mb-4" src="images/logos/competitive_battleship.svg" alt="Logo" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Sign in to<br>Competitive Battleship</h1>
 
+        <div id="error-msg" class="alert alert-danger" role="alert">Incorrect username or password.</div>
+
         <label for="user_id">ID or Email address</label>
         <input type="text" id="user_id" class="form-control" placeholder="ID or Email address" required autofocus>
         
@@ -21,8 +23,7 @@
         <input type="password" id="password" class="form-control" placeholder="Password" required>
 
         <button id="submit-but" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
-        <br>
-        <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
+        <p id="copyright" class="mt-5 mb-3 text-muted">&copy; 2024</p>
     </form>
   
     <script src="login.js"></script>
