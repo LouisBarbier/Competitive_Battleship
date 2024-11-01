@@ -1,4 +1,4 @@
-const url = "checkLog.php";
+const url = "functions/checkLog.php";
 
 document.getElementById('submit-but').addEventListener('click', function(){
     var fetchOptions = {
