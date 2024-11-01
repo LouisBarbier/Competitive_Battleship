@@ -12,7 +12,7 @@
     <!--Here players will be wait while the game try to get them against the closest player (in term of rank)
     Once a player is found the game will ask them to confirm the battle. Once confirmed the battle will start (they will be both redirected to battle.php).
     -->
-    <header class="d-flex flex-wrap justify-content-center border-bottom">
+    <header class="d-flex flex-wrap justify-content-center">
         <a href="index.php" target="_self" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="images/logos/competitive_battleship.svg" alt="Logo" class="bi me-2" width="40" height="40">
             <span class="fs-4">Competitive Battleship</span>

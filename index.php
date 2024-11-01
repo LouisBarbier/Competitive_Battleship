@@ -55,7 +55,7 @@
     
     -->
 
-    <header class="d-flex flex-wrap justify-content-center border-bottom">
+    <header class="d-flex flex-wrap justify-content-center">
         <a href="#" target="_self" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="images/logos/competitive_battleship.svg" alt="Logo" class="bi me-2" width="40" height="40">
             <span class="fs-4">Competitive Battleship</span>
@@ -75,24 +75,29 @@
                 <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
-                <div class="container">
-                    <!--This <li> show the editAccount button only if we are already connected
-                        If we are not, then it show the sign in and sign up buttons
-                    -->
-                    <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
-                    <a href="#" class="nav-link" target="_self">Sign Up</a>
-                </div>
+                <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a href="registration.php" class="nav-link" target="_self">Sign Up</a>
             </li>
         </ul>
     </header>
 
-    <main>
-        <div id="started_games"><a href="battle.php" target="_self">Continue!</a></div>
-        <div id="search_games"><a href="matchmaking.php" target="_self">Battle!</a></div>
-        <div id="profile"></div>  
+    <main class="container">
+        <div class="row">
+            <div id="started_games" class="col mx-2">
+                <a href="battle.php" target="_self">Continue!</a>
+            </div>
+            <div id="search_games" class="col mx-2">
+                <a href="matchmaking.php" target="_self">Battle!</a>
+            </div>
+            <div id="profile" class="col mx-2">
+                Profile
+            </div>
+        </div>
     </main>
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center border-top">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center">
         <div class="col-md-4 d-flex align-items-center">
             <a href="#" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                 <img src="images/logos/competitive_battleship.svg" alt="Logo" class="bi" width="30" height="30">

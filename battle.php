@@ -11,7 +11,7 @@
 <body>
     <!--Here players will be able to battle against each other a javascript loop while check for updates (opponent responce) every n seconds-->
 
-    <header class="d-flex flex-wrap justify-content-center border-bottom">
+    <header class="d-flex flex-wrap justify-content-center">
         <a href="index.php" target="_self" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="images/logos/competitive_battleship.svg" alt="Logo" class="bi me-2" width="40" height="40">
             <span class="fs-4">Competitive Battleship</span>
