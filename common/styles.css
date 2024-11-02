@@ -1,37 +1,79 @@
+:root {
+    --body-bg-color: #e3e3e1;
+    --nav-bg-color: #787C7E;
+    --bd-color: black;
+    --tx-color: black;
+}
+
 body {
-    background-color: #e3e3e1;
+    background-color: var(--body-bg-color);
 }
 
 header {
     position: sticky;
     width: 100%;
     padding: 1.5rem;
-    border-bottom: solid 5px black;
+    border-bottom: solid 5px var(--bd-color);
+    background-color: var(--nav-bg-color);
+}
+
+.custom-active {
+    --bs-nav-pills-link-active-bg: black;
 }
 
 main {
     padding: 1.5rem;
 }
 
-.col {
-    border: solid 3px black;
-    border-radius: 1.5rem;
-}
-
-.col-profile {
-    flex: 0 0 auto;
-    width: 25%;
-  }
-
 footer {
     position: absolute;
     bottom: 0%; left: 0%;
     width: 100%;
     padding: 1.5rem;
-    border-top: solid 5px black;
+    border-top: solid 5px var(--bd-color);
+    background-color: var(--nav-bg-color);
 }
 
-a {
-    text-decoration: none;
-    color: black;
+.col {
+    border: solid 3px var(--bd-color);
+    border-radius: 1.5vw;
+}
+
+#started_games {
+    overflow-y: auto;
+}
+
+#search_games {
+    position: relative;
+}
+
+div.nb-online {
+    position: absolute;
+    top: 0%; right: 1%;
+    font-size: 1.2vw;
+}
+
+span.nb-online {
+    font-weight: bold;
+}
+
+#battle-button {
+    border-color: rgb(0, 176, 80);
+    background-color: #9BC696;
+    font-weight: bold;
+}
+
+#battle-button:hover {
+    border-color: rgb(0, 176, 70);
+    background-color: #90b78b;
+}
+
+#battle-button:active {
+    border-color: rgb(0, 134, 60);
+    background-color: #8aad84;
+}
+
+#profile {
+    flex: 0 0 auto;
+    width: 25%;
 }

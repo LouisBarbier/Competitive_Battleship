@@ -6,7 +6,7 @@
     <meta name="author" content="Louis Barbier">
     <meta name="description" content="Play Battleship Against Other">
     <title>Competitive Battleship</title>
-    <link rel="icon" type="image/svg+xml" href="images\logos\competitive_battleship.svg">
+    <link rel="icon" type="image/svg+xml" href="common/images/competitive_battleship.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="common/styles.css">
 </head>
@@ -63,37 +63,51 @@
 
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a href="#" class="nav-link active" target="_self" aria-current="page">Home</a>
+                <a href="#" class="nav-link active custom-active" target="_self" aria-current="page">Home</a>
             </li>
             <li class="nav-item">
                 <!--
                     This button is accessible only if we are connected and if we are an admin
                 -->
-                <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
+                <a href="admin.php" class="nav-link text-black" target="_self">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
+                <a href="tutorial.php" class="nav-link text-black" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
-                <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
+                <a id="login" href="login.html" class="nav-link text-black" target="_blank">Sign In</a>
             </li>
             <li class="nav-item">
-                <a href="registration.php" class="nav-link" target="_self">Sign Up</a>
+                <a href="registration.php" class="nav-link text-black" target="_self">Sign Up</a>
             </li>
         </ul>
     </header>
 
     <main class="container">
         <div class="row">
-            <div id="started_games" class="col mx-2">
+            <div id="started_games" class="col mx-2 p-3 mw-100">
                 <h4 class="text-center">Continue</h4>
-                <a href="battle.php" target="_self">link</a>
+                <div class="container">
+                    <div class="row">
+                        Test 1 <a href="battle.php" target="_self">link</a>
+                    </div>
+                    <div class="row">
+                        Test 2 <a href="battle.php" target="_self">link</a>
+                    </div>
+                    <div class="row">
+                        Test 3 <a href="battle.php" target="_self">link</a>
+                    </div>
+                </div>
             </div>
-            <div id="search_games" class="col mx-2">
-                <h4 class="text-center">Battle</h4>
-                <a href="matchmaking.php" target="_self">link</a>
+            <div id="search_games" class="col mx-2 p-3 mw-100">
+                <h4 class="text-center">Start</h4>
+                <div class="nb-online"><span class="nb-online">[loading]</span> online</div>
+                <div>Start a new battle against someone your rank</div>
+                <div class="text-center my-2">
+                    <a id="battle-button" class="btn btn-lg" role="button" href="matchmaking.php" target="_self">BATTLE</a>
+                </div>
             </div>
-            <div id="profile" class="col col-profile mx-2">
+            <div id="profile" class="col mx-2 p-3 mw-100">
                 <h4 class="text-center">Profile</h4>
                 Profile
             </div>
@@ -108,9 +122,9 @@
             <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Competitive Battleship</span>
         </div>
 
-        <ul class="nav col-md-4 justify-content-start list-unstyled d-flex">
+        <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.php" class="nav-link" target="_self">Terms</a>
+                <a href="terms.php" class="nav-link text-black" target="_self">Terms</a>
             </li>
         </ul>
 
