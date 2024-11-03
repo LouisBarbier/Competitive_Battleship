@@ -26,7 +26,7 @@ main {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0%; left: 0%;
     width: 100%;
     padding: 1.5rem;
@@ -34,13 +34,36 @@ footer {
     background-color: var(--nav-bg-color);
 }
 
-.col {
+.custom-col {
     border: solid 3px var(--bd-color);
     border-radius: 1.5vw;
 }
 
-#started_games {
+#started_games .table-wrapper {
+    display: inline-block;
+    margin: 0; padding: 0;
+    max-height: 47vh; width: 100%;
     overflow-y: auto;
+}
+
+#started_games .table {
+    --bs-table-bg: #e3e3e100;
+}
+
+#started_games .table tr {
+    border-bottom: solid 3px var(--bd-color);
+}
+
+#started_games .table tbody tr:hover {
+    --bs-table-bg: #cacaca;
+}
+
+#date-col {
+    width: 25%;
+}
+
+#opponant-col {
+    width: 50%;
 }
 
 #search_games {

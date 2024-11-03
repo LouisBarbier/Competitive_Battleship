@@ -85,21 +85,68 @@
 
     <main class="container">
         <div class="row">
-            <div id="started_games" class="col mx-2 p-3 mw-100">
+            <div id="started_games" class="col custom-col mx-2 p-3">
                 <h4 class="text-center">Continue</h4>
-                <div class="container">
-                    <div class="row">
-                        Test 1 <a href="battle.php" target="_self">link</a>
-                    </div>
-                    <div class="row">
-                        Test 2 <a href="battle.php" target="_self">link</a>
-                    </div>
-                    <div class="row">
-                        Test 3 <a href="battle.php" target="_self">link</a>
-                    </div>
+                <div class="table-wrapper">
+                    <table class="table text-center table-sm">
+                        <thead>
+                            <tr>
+                                <th id="date-col" scope="col">Start Date</th>
+                                <th id="opponant-col" scope="col">Opponant</th>
+                                <th id="continue-col" scope="col">Continue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">05/13/14</th>
+                                <td>Test 1</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11/07/23</th>
+                                <td>Test 2</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">05/13/14</th>
+                                <td>Test 3</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11/07/23</th>
+                                <td>Test 4</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">05/13/14</th>
+                                <td>Test 5</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11/07/23</th>
+                                <td>Test 6</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11/07/23</th>
+                                <td>Test 7</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">05/13/14</th>
+                                <td>Test 8</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11/07/23</th>
+                                <td>Test 9</td>
+                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div id="search_games" class="col mx-2 p-3 mw-100">
+            <div id="search_games" class="col custom-col mx-2 p-3 mw-100">
                 <h4 class="text-center">Start</h4>
                 <div class="nb-online"><span class="nb-online">[loading]</span> online</div>
                 <div>Start a new battle against someone your rank</div>
@@ -107,7 +154,7 @@
                     <a id="battle-button" class="btn btn-lg" role="button" href="matchmaking.php" target="_self">BATTLE</a>
                 </div>
             </div>
-            <div id="profile" class="col mx-2 p-3 mw-100">
+            <div id="profile" class="col custom-col mx-2 p-3 mw-100">
                 <h4 class="text-center">Profile</h4>
                 Profile
             </div>
