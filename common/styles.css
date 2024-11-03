@@ -18,12 +18,12 @@ header {
     background-color: var(--nav-bg-color);
 }
 
-a, .nav-link {
+.nav-link {
     border: solid 2px transparent;
     color: var(--tx-color);
 }
 
-a:hover, .nav-link:hover {
+.nav-link:hover {
     border: solid 2px var(--bd-color);
     color: var(--tx-color);
 }
@@ -47,7 +47,7 @@ footer {
 }
 
 #tutorial-nav h4 a{
-    border: none;
+    color: var(--tx-color);
     text-decoration: none;
 }
 
