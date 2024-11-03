@@ -63,22 +63,22 @@
 
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a href="#" class="nav-link active custom-active" target="_self" aria-current="page">Home</a>
+                <a href="#" class="nav-link active" target="_self" aria-current="page">Home</a>
             </li>
             <li class="nav-item">
                 <!--
                     This button is accessible only if we are connected and if we are an admin
                 -->
-                <a href="admin.php" class="nav-link text-black" target="_self">Admin Page</a>
+                <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.php" class="nav-link text-black" target="_self">Tutorial</a>
+                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
-                <a id="login" href="login.html" class="nav-link text-black" target="_blank">Sign In</a>
+                <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
             </li>
             <li class="nav-item">
-                <a href="registration.php" class="nav-link text-black" target="_self">Sign Up</a>
+                <a href="registration.php" class="nav-link" target="_self">Sign Up</a>
             </li>
         </ul>
     </header>
@@ -171,7 +171,7 @@
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.php" class="nav-link text-black" target="_self">Terms</a>
+                <a href="terms.php" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 

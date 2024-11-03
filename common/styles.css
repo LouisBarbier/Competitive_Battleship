@@ -3,6 +3,7 @@
     --nav-bg-color: #787C7E;
     --bd-color: black;
     --tx-color: black;
+    --tx-color-inv: white;
 }
 
 body {
@@ -17,8 +18,19 @@ header {
     background-color: var(--nav-bg-color);
 }
 
-.custom-active {
-    --bs-nav-pills-link-active-bg: black;
+a, .nav-link {
+    border: solid 2px transparent;
+    color: var(--tx-color);
+}
+
+a:hover, .nav-link:hover {
+    border: solid 2px var(--bd-color);
+    color: var(--tx-color);
+}
+
+.active {
+    color: var(--tx-color-inv);
+    --bs-nav-pills-link-active-bg: var(--bd-color);
 }
 
 main {
@@ -32,6 +44,17 @@ footer {
     padding: 1.5rem;
     border-top: solid 5px var(--bd-color);
     background-color: var(--nav-bg-color);
+}
+
+#tutorial-nav h4 a{
+    border: none;
+    text-decoration: none;
+}
+
+#tutorial-text {
+    position: relative;
+    height: 61vh;
+    overflow: auto;
 }
 
 .custom-col {
@@ -81,7 +104,7 @@ span.nb-online {
 }
 
 #battle-button {
-    border-color: rgb(0, 176, 80);
+    border: solid 2px rgb(0, 176, 80);
     background-color: #9BC696;
     font-weight: bold;
 }
