@@ -31,7 +31,7 @@
 
     How many levels of headings are necessary?
         The only page that will contain more than 1 or 0 headings will be
-        tutorial.php that might contain 3 levels of headings :
+        tutorial.html that might contain 3 levels of headings :
             - The title of the page
             - Another level for the main titles (ex : How to play, The score system, etc...)
             - Another for secondary titles (ex : the different chapters of How to play)
@@ -72,7 +72,7 @@
                 <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
+                <a href="tutorial.html" class="nav-link" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
                 <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
@@ -97,58 +97,51 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">05/13/14</th>
-                                <td>Test 1</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">11/07/23</th>
-                                <td>Test 2</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">05/13/14</th>
-                                <td>Test 3</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">11/07/23</th>
-                                <td>Test 4</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">05/13/14</th>
-                                <td>Test 5</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">11/07/23</th>
-                                <td>Test 6</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">11/07/23</th>
-                                <td>Test 7</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">05/13/14</th>
-                                <td>Test 8</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">11/07/23</th>
-                                <td>Test 9</td>
-                                <td><a class="btn continue-button" role="button" href="battle.php" target="_self">GO</a></td>
-                            </tr>
+                            <?PHP
+
+                                for ($i = 1; $i < 11; $i++) {
+
+                                    $battle_id = 1;
+                                    $battle_startDate = "05/13/14";
+                                    $opponant_name = "Test $i";
+                                    $your_turn = true;
+
+                                    if ($your_turn) {
+                                        $continue_button_color = 'green';
+                                    } else {
+                                        $continue_button_color = 'red';
+                                    }
+
+                                    //&rightarrow;
+                                    //&Rightarrow;
+                                    //&rsaquo;
+                                    //&RightTriangle;
+                                    //&triangleright;
+
+                                    echo "<tr>
+                                        <th scope=\"row\">$battle_startDate</th>
+                                        <td>$opponant_name</td>
+                                        <td><a class=\"btn continue-button $continue_button_color\" role=\"button\" href=\"battle.php?id=$battle_id\" target=\"_self\">&blacktriangleright;</a></td>
+                                    </tr>";
+                                }
+
+                            ?>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div id="search_games" class="col custom-col mx-2 p-3 mw-100">
                 <h4 class="text-center">Start</h4>
-                <div class="nb-online"><span class="nb-online">[loading]</span> online</div>
+                <div class="nb-online">
+                    <span class="nb-online">
+                        <?PHP
+
+                            $nb_online = 2000;
+
+                            echo $nb_online;
+
+                        ?>
+                    </span> online</div>
                 <div>Start a new battle against someone your rank</div>
                 <div class="text-center my-2">
                     <a id="battle-button" class="btn btn-lg" role="button" href="matchmaking.php" target="_self">BATTLE</a>
@@ -171,7 +164,7 @@
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.php" class="nav-link" target="_self">Terms</a>
+                <a href="terms.html" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 

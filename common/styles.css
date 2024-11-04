@@ -81,6 +81,10 @@ footer {
     --bs-table-bg: #cacaca;
 }
 
+.continue-button {
+    border: solid 1px var(--bd-color);
+}
+
 #date-col {
     width: 25%;
 }

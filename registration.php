@@ -27,7 +27,7 @@
                 <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
+                <a href="tutorial.html" class="nav-link" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
                 <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
@@ -50,7 +50,7 @@
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.php" class="nav-link" target="_self">Terms</a>
+                <a href="terms.html" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 
