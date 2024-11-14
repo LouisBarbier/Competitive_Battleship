@@ -1,3 +1,9 @@
+<?PHP
+
+include('./functions/functionIndex.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,14 +103,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?PHP
+                            <?php
 
                                 for ($i = 1; $i < 11; $i++) {
 
-                                    $battle_id = 1;
+                                    $battle_id = $i;
                                     $battle_startDate = "05/13/14";
                                     $opponant_name = "Test $i";
-                                    $your_turn = true;
+
+                                    $your_turn = random_int(0, 1);
 
                                     if ($your_turn) {
                                         $continue_button_color = 'green';
@@ -134,10 +141,10 @@
                 <h4 class="text-center">Start</h4>
                 <div class="nb-online">
                     <span class="nb-online">
-                        <?PHP
+                        <?php
 
-                            $nb_online = 2000;
-
+                            $nb_online = getNbOnline();
+                            
                             echo $nb_online;
 
                         ?>
@@ -149,7 +156,45 @@
             </div>
             <div id="profile" class="col custom-col mx-2 p-3 mw-100">
                 <h4 class="text-center">Profile</h4>
-                Profile
+
+                <?php
+                
+                echo "";
+
+                ?>
+                <div class="row">
+                    <div class="col">
+                        <img id="profile-picture" class="img-fluid" alt="profile picture" src="profile_pictures/1.png">
+                    </div>
+                    <div class="col">
+                        <span class="label">rank:</span>
+                        1325
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="label">username:</span>
+                        LouisBarbier86
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="label">first name:</span>
+                        Louis
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="label">last name:</span>
+                        Barbier
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="label">email:</span>
+                        lnb100@juniata.edu
+                    </div>
+                </div>
             </div>
         </div>
     </main>
