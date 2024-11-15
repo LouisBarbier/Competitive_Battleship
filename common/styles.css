@@ -12,6 +12,7 @@ body {
 
 header {
     position: sticky;
+    top: 0; z-index: 1;
     width: 100%;
     padding: 1.5rem;
     border-bottom: solid 5px var(--bd-color);
@@ -43,8 +44,8 @@ main {
 }
 
 footer {
-    position: fixed;
-    bottom: 0%; left: 0%;
+    position: sticky;
+    bottom: 0; z-index: 0;
     width: 100%;
     padding: 1.5rem;
     border-top: solid 5px var(--bd-color);

@@ -22,6 +22,7 @@ document.getElementById('submit-but').addEventListener('click', function(){
 
             if (dataJSON.result.valid == '1') {
                 window.opener.setUser(dataJSON.result.person);
+                window.close();
             } else {
                 document.getElementById("error-msg").style.display = 'block';
                 document.getElementById("error-msg").style.visibility = 'visible';

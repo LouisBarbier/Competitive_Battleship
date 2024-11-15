@@ -14,3 +14,11 @@ if (loginElem != undefined && loginElem != null) {
     window.open("login.html", "Log in - Competitive Battleship", features);
   });
 }
+
+function setUser (user) {
+  // console.log(user);
+
+  document.cookie = "user=" + JSON.stringify(user) + "; path=/";
+
+  location.reload();
+}

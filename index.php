@@ -2,10 +2,22 @@
 
 include('./functions/functionIndex.php');
 
+if (isset($_COOKIE["user"])) {
+    $user = json_decode($_COOKIE["user"], true);
+
+    $pers_id = $user['pers_id'];
+    $pers_password = $user['pers_password'];
+
+    $connected = isValid($pers_id, $pers_password);
+} else {
+    $connected = 0;
+}
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +28,7 @@ include('./functions/functionIndex.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="common/styles.css">
 </head>
+
 <body>
     <!--
     Design considerations : 
@@ -105,32 +118,26 @@ include('./functions/functionIndex.php');
                         <tbody>
                             <?php
 
-                                for ($i = 1; $i < 11; $i++) {
+                            for ($i = 1; $i < 11; $i++) {
 
-                                    $battle_id = $i;
-                                    $battle_startDate = "05/13/14";
-                                    $opponant_name = "Test $i";
+                                $battle_id = $i;
+                                $battle_startDate = "05/13/14";
+                                $opponant_name = "Test $i";
 
-                                    $your_turn = random_int(0, 1);
+                                $your_turn = random_int(0, 1);
 
-                                    if ($your_turn) {
-                                        $continue_button_color = 'green';
-                                    } else {
-                                        $continue_button_color = 'red';
-                                    }
+                                if ($your_turn) {
+                                    $continue_button_color = 'green';
+                                } else {
+                                    $continue_button_color = 'red';
+                                }
 
-                                    //&rightarrow;
-                                    //&Rightarrow;
-                                    //&rsaquo;
-                                    //&RightTriangle;
-                                    //&triangleright;
-
-                                    echo "<tr>
+                                echo "<tr>
                                         <th scope=\"row\">$battle_startDate</th>
                                         <td>$opponant_name</td>
                                         <td><a class=\"btn continue-button $continue_button_color\" role=\"button\" href=\"battle.php?id=$battle_id\" target=\"_self\">&blacktriangleright;</a></td>
                                     </tr>";
-                                }
+                            }
 
                             ?>
                         </tbody>
@@ -143,12 +150,13 @@ include('./functions/functionIndex.php');
                     <span class="nb-online">
                         <?php
 
-                            $nb_online = getNbOnline();
-                            
-                            echo $nb_online;
+                        $nb_online = getNbOnline();
+
+                        echo $nb_online;
 
                         ?>
-                    </span> online</div>
+                    </span> online
+                </div>
                 <div>Start a new battle against someone your rank</div>
                 <div class="text-center my-2">
                     <a id="battle-button" class="btn btn-lg" role="button" href="matchmaking.php" target="_self">BATTLE</a>
@@ -157,49 +165,59 @@ include('./functions/functionIndex.php');
             <div id="profile" class="col custom-col mx-2 p-3 mw-100">
                 <h4 class="text-center">Profile</h4>
 
-                <?php
+                <?PHP
                 
-                echo "";
+                if ($connected) {
+                    echo "<div class=\"row\">
+                        <div class=\"col\">";
+
+                            if (($user["pers_photo"] !== "") and ($user["pers_photo"] !== null)) {
+                                echo "<img id=\"profile-picture\" class=\"img-fluid\" alt=\"profile picture\" src=\"profile_pictures/" . $user["pers_photo"] . "\">";
+                            } else {
+                                echo "<img id=\"profile-picture\" class=\"img-fluid\" alt=\"profile picture\" src=\"profile_pictures/default.png\">";
+                            }
+                
+                        echo "</div>
+                        <div class=\"col\">
+                            <span class=\"label\">rank:</span>
+                            " . $user["pers_score"] . "
+                        </div>
+                    </div>
+                    <div class=\"row\">
+                        <div class=\"col\">
+                            <span class=\"label\">username:</span>
+                            " . $user["pers_username"] . "
+                        </div>
+                    </div>
+                    <div class=\"row\">
+                        <div class=\"col\">
+                            <span class=\"label\">first name:</span>
+                            " . $user["pers_firstname"] . "
+                        </div>
+                    </div>
+                    <div class=\"row\">
+                        <div class=\"col\">
+                            <span class=\"label\">last name:</span>
+                            " . $user["pers_lastname"] . "
+                        </div>
+                    </div>
+                    <div class=\"row\">
+                        <div class=\"col\">
+                            <span class=\"label\">email:</span>
+                            " . $user["pers_email"] . "
+                        </div>
+                    </div>";
+                } else {
+                    echo "<div class=\"alert alert-warning\">Not connected</div>";
+                }
 
                 ?>
-                <div class="row">
-                    <div class="col">
-                        <img id="profile-picture" class="img-fluid" alt="profile picture" src="profile_pictures/1.png">
-                    </div>
-                    <div class="col">
-                        <span class="label">rank:</span>
-                        1325
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <span class="label">username:</span>
-                        LouisBarbier86
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <span class="label">first name:</span>
-                        Louis
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <span class="label">last name:</span>
-                        Barbier
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <span class="label">email:</span>
-                        lnb100@juniata.edu
-                    </div>
-                </div>
+                
             </div>
         </div>
     </main>
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center mt-auto">
         <div class="col-md-4 d-flex align-items-center">
             <a href="#" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                 <img src="common/images/competitive_battleship.svg" alt="Logo" class="bi" width="30" height="30">
@@ -236,4 +254,5 @@ include('./functions/functionIndex.php');
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>

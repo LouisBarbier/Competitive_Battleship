@@ -2,6 +2,33 @@
 
 // phpinfo();
 
+function isValid ($pers_id, $pers_password) {
+    include("db.php");
+
+    $sql = "SELECT COUNT(*)
+            FROM Person
+            WHERE pers_id = '$pers_id' AND pers_password = '$pers_password'";
+
+    // echo $sql;
+
+    $connected = 0;
+
+    if ($queryResult=$DB->query($sql)) {
+
+        $nb_correct = $queryResult->fetch_row()[0];
+
+        if ($nb_correct === 1) {
+            $connected = 1;
+        } else {
+            $connected = 0;
+        }
+    }
+
+    $DB->close();
+
+    return $connected;
+}
+
 function getNbOnline () {
     include("db.php");
 
