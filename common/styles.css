@@ -52,6 +52,10 @@ footer {
     background-color: var(--nav-bg-color);
 }
 
+#tutorial-scrollspy {
+    height: 59vh;
+}
+
 #tutorial-nav h4 a{
     color: var(--tx-color);
     text-decoration: none;
@@ -59,7 +63,7 @@ footer {
 
 #tutorial-text {
     position: relative;
-    height: 61vh;
+    height: 59vh;
     overflow: auto;
 }
 

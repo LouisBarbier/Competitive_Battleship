@@ -38,7 +38,61 @@
         </ul>
     </header>
 
-
+    <main>
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img alt="your photo" src="./profile_pictures/1.png">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="photo">Photo</label>
+                            <input id="photo" class="form-control" name="photo" type="file">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="username">Username</label>
+                            <input id="username" class="form-control" name="username" placeholder="Username" aria-label="Username" type="text">
+                        </div>
+                    </div>    
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="first-name">First Name</label>
+                            <input id="first-name" class="form-control" name="first-name" placeholder="First name" aria-label="First name" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="last-name">Last Name</label>
+                            <input id="last-name" class="form-control" name="last-name" placeholder="Last name" aria-label="Last name" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="email">Email</label>
+                            <input id="email" class="form-control" name="email" placeholder="Email" aria-label="Email" type="email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="password">Password</label>
+                    <input id="password" class="form-control" name="password" placeholder="Password" aria-label="Password" type="password">
+                </div>
+                <div class="col-md-6">
+                    <label for="confirm-password">Confirm password</label>
+                    <input id="confirm-password" class="form-control" name="confirm-password" placeholder="Password" aria-label="Password" type="password">
+                </div>
+            </div>
+        </form>
+    </main>
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center mt-auto">
         <div class="col-md-4 d-flex align-items-center">

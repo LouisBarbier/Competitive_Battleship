@@ -1,9 +1,12 @@
 <?php
 
+
+include 'db.php';
+
 // phpinfo();
 
 function isValid ($pers_id, $pers_password) {
-    include("db.php");
+    global $DB;
 
     $sql = "SELECT COUNT(*)
             FROM Person
@@ -17,20 +20,20 @@ function isValid ($pers_id, $pers_password) {
 
         $nb_correct = $queryResult->fetch_row()[0];
 
-        if ($nb_correct === 1) {
+        // echo "nb_correct = $nb_correct";
+
+        if ($nb_correct == 1) {
             $connected = 1;
         } else {
             $connected = 0;
         }
     }
 
-    $DB->close();
-
     return $connected;
 }
 
 function getNbOnline () {
-    include("db.php");
+    global $DB;
 
     $fifteenMinAgo = date_sub(new DateTime('now'), new DateInterval('PT15M'));
 
@@ -44,11 +47,7 @@ function getNbOnline () {
         $nb_online = $queryResult->fetch_row()[0];
     }
 
-    $DB->close();
-
     return $nb_online;
 }
-
-
 
 ?>

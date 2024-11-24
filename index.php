@@ -1,14 +1,19 @@
-<?PHP
+<?php
 
 include('./functions/functionIndex.php');
 
 if (isset($_COOKIE["user"])) {
+
+    // echo $_COOKIE["user"];
+
     $user = json_decode($_COOKIE["user"], true);
 
     $pers_id = $user['pers_id'];
     $pers_password = $user['pers_password'];
 
     $connected = isValid($pers_id, $pers_password);
+
+    // echo "connected = $connected";
 } else {
     $connected = 0;
 }
@@ -93,12 +98,22 @@ if (isset($_COOKIE["user"])) {
             <li class="nav-item">
                 <a href="tutorial.html" class="nav-link" target="_self">Tutorial</a>
             </li>
-            <li class="nav-item">
-                <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
-            </li>
-            <li class="nav-item">
-                <a href="registration.php" class="nav-link" target="_self">Sign Up</a>
-            </li>
+
+            <?php
+            
+            if ($connected) {
+                echo "<a href=\"editAccount.php\" class=\"nav-link\" target=\"_self\">Edit Account</a>";
+            } else {
+                echo "<li class=\"nav-item\">
+                    <a id=\"login\" href=\"login.html\" class=\"nav-link\" target=\"_blank\">Sign In</a>
+                </li>
+                <li class=\"nav-item\">
+                    <a href=\"registration.php\" class=\"nav-link\" target=\"_self\">Sign Up</a>
+                </li>";
+            }
+            
+            ?>
+            
         </ul>
     </header>
 
@@ -165,7 +180,7 @@ if (isset($_COOKIE["user"])) {
             <div id="profile" class="col custom-col mx-2 p-3 mw-100">
                 <h4 class="text-center">Profile</h4>
 
-                <?PHP
+                <?php
                 
                 if ($connected) {
                     echo "<div class=\"row\">

@@ -1,0 +1,68 @@
+:root {
+    --body-bg-color: #e3e3e1;
+    --nav-bg-color: #787C7E;
+    --bd-color: black;
+    --tx-color: black;
+    --tx-color-inv: white;
+}
+
+body {
+    background-color: var(--body-bg-color);
+}
+
+header {
+    position: sticky;
+    top: 0; z-index: 1;
+    width: 100%;
+    padding: 1.5rem;
+    border-bottom: solid 5px var(--bd-color);
+    background-color: var(--nav-bg-color);
+}
+
+.nav-link {
+    border: solid 2px transparent;
+    color: var(--tx-color);
+}
+
+.nav-link:hover {
+    border: solid 2px var(--bd-color);
+    color: var(--tx-color);
+}
+
+.nav-link:active {
+    border: solid 2px var(--bd-color);
+    color: var(--tx-color);
+}
+
+.active {
+    color: var(--tx-color-inv);
+    --bs-nav-pills-link-active-bg: var(--bd-color);
+}
+
+main {
+    padding: 1.5rem;
+}
+
+footer {
+    position: sticky;
+    bottom: 0; z-index: 0;
+    width: 100%;
+    padding: 1.5rem;
+    border-top: solid 5px var(--bd-color);
+    background-color: var(--nav-bg-color);
+}
+
+.continue-button.red {
+    border: solid 2px rgb(255, 67, 67);
+    background-color: #FF9797;
+}
+
+.continue-button.red:hover {
+    border-color: rgb(232, 60, 60);
+    background-color: #ec8b8b;
+}
+
+.continue-button.red:active {
+    border-color: rgb(196, 51, 51);
+    background-color: #d57e7e;
+}

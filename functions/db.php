@@ -1,10 +1,10 @@
 <?php
-    define("SERVER", "localhost");
-    define("USER", "root");
-    define("PASSWORD", "");
+    define("DBSERVER", "localhost");
+    define("DBUSER", "root");
+    define("DBPASSWORD", "");
     define("DBNAME", "competitive_battleship");
 
-    $DB = new mysqli(SERVER, USER, PASSWORD, DBNAME);
+    $DB = new mysqli(DBSERVER, DBUSER, DBPASSWORD, DBNAME);
 
     if($DB->connect_error) {
         die("Connection failed: " . $DB->connect_error);
