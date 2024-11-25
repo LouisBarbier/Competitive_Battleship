@@ -1,3 +1,8 @@
+#profile-picture-visualizer {
+    max-height: 150px;
+    max-width: 150px;
+}
+
 #taken.red {
     color: #721c24;
     background-color: #f8d7da;

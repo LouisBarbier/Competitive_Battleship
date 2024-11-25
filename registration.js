@@ -38,3 +38,14 @@ document.getElementById('username').addEventListener('change', function(){
             .catch((error) => console.log(error));
     }
 });
+
+document.getElementById('profile-picture').addEventListener('change', function(){
+    let file = document.getElementById('profile-picture').files[0];
+
+    if (file) {
+        document.getElementById('profile-picture-visualizer').src = URL.createObjectURL(file)
+        document.getElementById('profile-picture-visualizer').addEventListener('onLoad', function(){
+            URL.revokeObjectURL(document.getElementById('profile-picture-visualizer').src);
+        });
+    }
+});

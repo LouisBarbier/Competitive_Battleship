@@ -40,18 +40,18 @@
     </header>
 
     <main>
-        <form>
+        <form action="registration_process.php" method="POST">
             <div class="row">
                 <div class="col-md-5">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <img class="h-100" alt="your profile picture" src="./profile_pictures/1.png">
+                            <img id="profile-picture-visualizer" alt="your profile picture" src="./profile_pictures/default.png">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <label for="profile-picture">Profile Picture</label>
-                            <input id="profile-picture" class="form-control" name="profile-picture" type="file">
+                            <input id="profile-picture" class="form-control" name="profile-picture" type="file" accept="image/*">
                         </div>
                     </div>
                 </div>
