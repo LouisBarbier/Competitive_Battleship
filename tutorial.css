@@ -1,0 +1,14 @@
+#tutorial-scrollspy {
+    height: 59vh;
+}
+
+#tutorial-nav h4 a{
+    color: var(--tx-color);
+    text-decoration: none;
+}
+
+#tutorial-text {
+    position: relative;
+    height: 59vh;
+    overflow: auto;
+}

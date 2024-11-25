@@ -1,0 +1,110 @@
+.custom-col {
+    border: solid 3px var(--bd-color);
+    border-radius: 1.5vw;
+}
+
+#started_games .table-wrapper {
+    display: inline-block;
+    margin: 0; padding: 0;
+    max-height: 47vh; width: 100%;
+    overflow-y: auto;
+}
+
+#started_games .table {
+    --bs-table-bg: #e3e3e100;
+}
+
+#started_games .table tr {
+    border-bottom: solid 3px var(--bd-color);
+}
+
+#started_games .table tbody tr:hover {
+    --bs-table-bg: #cacaca;
+}
+
+.continue-button {
+    font-weight: bold;
+}
+
+.continue-button.green {
+    border: solid 2px rgb(0, 176, 80);
+    background-color: #9BC696;
+}
+
+.continue-button.red {
+    border: solid 2px rgb(255, 67, 67);
+    background-color: #FF9797;
+}
+
+.continue-button.green:hover {
+    border-color: rgb(0, 176, 70);
+    background-color: #90b78b;
+}
+
+.continue-button.red:hover {
+    border-color: rgb(232, 60, 60);
+    background-color: #ec8b8b;
+}
+
+.continue-button.green:active {
+    border-color: rgb(0, 134, 60);
+    background-color: #8aad84;
+}
+
+.continue-button.red:active {
+    border-color: rgb(196, 51, 51);
+    background-color: #d57e7e;
+}
+
+#date-col {
+    width: 25%;
+}
+
+#opponant-col {
+    width: 50%;
+}
+
+#search_games {
+    position: relative;
+}
+
+div.nb-online {
+    position: absolute;
+    top: 0%; right: 1%;
+    font-size: 1.2vw;
+}
+
+span.nb-online {
+    font-weight: bold;
+}
+
+#battle-button {
+    border: solid 2px rgb(0, 176, 80);
+    background-color: #9BC696;
+    font-weight: bold;
+}
+
+#battle-button:hover {
+    border-color: rgb(0, 176, 70);
+    background-color: #90b78b;
+}
+
+#battle-button:active {
+    border-color: rgb(0, 134, 60);
+    background-color: #8aad84;
+}
+
+#profile {
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+#profile-picture {
+    max-width: 100%;
+    height: auto;
+}
+
+span.label {
+    display: inline-block;
+    width: 6vw;
+}
