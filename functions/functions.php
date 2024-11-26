@@ -1,6 +1,5 @@
 <?php
 
-
 include 'db.php';
 
 // phpinfo();
@@ -73,28 +72,61 @@ function existUsername ($pers_username) {
     }
 }
 
-function register ($pers_firstname, $pers_lastname, $pers_email, $pers_photo, $pers_username, $pers_password) {
+function existEmail ($pers_email) {
     global $DB;
+
+    $sql = "SELECT count(*)
+		FROM Person
+		WHERE pers_email = '$pers_email'";
+
+    if ($queryResult=$DB->query($sql)) {
+
+        $countResult = $queryResult->fetch_row();
+
+        if (!empty($countResult)) {
+            if ($countResult[0] > 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            return -1;
+        }
+    }
+}
+
+function register ($pers_firstname, $pers_lastname, $pers_email, $pers_username, $pers_password, $pers_photo = null) {
+    global $DB;
+
+    if ($pers_photo === null) {
+        $pers_photo_sql = "NULL";
+    } else {
+        $pers_photo_sql = "'$pers_photo'";
+    }
 
     $sql = "LOCK TABLES Person WRITE;";
 			
     if($DB->query($sql) === true){
         
-        echo "Table Person Locked<br>";
+        // echo "Table Person Locked<br>";
         
-        $sql = "INSERT INTO Person (pers_firstname, pers_lastname, pers_email, pers_photo, pers_username, pers_password)
-            VALUES ('$pers_firstname', '$pers_lastname', '$pers_email', '$pers_photo', '$pers_username', '$pers_password')";
+        $sql = "INSERT INTO Person (pers_firstname, pers_lastname, pers_email, pers_username, pers_password, pers_photo)
+            VALUES ('$pers_firstname', '$pers_lastname', '$pers_email', '$pers_username', '$pers_password', $pers_photo_sql)";
 
         if($DB->query($sql) === true){
         
-            echo "New Person inserted<br>";
+            // echo "New Person inserted<br>";
+
+            $pers_id = mysqli_insert_id($DB);
             
+        } else {
+            $pers_id = -1; // don't return -1; , We still have to unlock the table
         }
         
         $sql = "UNLOCK TABLES;";
     
-        if($DB->query($sql) === true){
-            echo "Table Person unlocked<br>";
+        if($DB->query($sql) == true){
+            // echo "Table Person unlocked<br>";
         } else {
             echo"ERREUR, problème rencontré lors du dés-verrouillage de la table<br/> Réponce de la base de donnée : ";
             echo $DB->error;
@@ -102,7 +134,25 @@ function register ($pers_firstname, $pers_lastname, $pers_email, $pers_photo, $p
     } else {
         echo"ERREUR, problème rencontré lors du verrouillage des tables<br/> Réponce de la base de donnée : ";
         echo $DB->error;
+
+        return -1;
     }
+
+    return $pers_id;
+}
+
+function update_profile_picture ($pers_id, $pers_photo = null) {
+    global $DB;
+
+    if ($pers_photo === null) {
+        $pers_photo_sql = "NULL";
+    } else {
+        $pers_photo_sql = "'$pers_photo'";
+    }
+
+    $sql = "UPDATE Person SET pers_photo = $pers_photo_sql WHERE pers_id = $pers_id";
+
+    $DB->query($sql);
 }
 
 ?>

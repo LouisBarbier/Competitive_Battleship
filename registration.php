@@ -1,10 +1,78 @@
 <?php
 
 if (isset($_POST['username'])) {
-    $username = "'".$_POST['username']."'";
-}
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $first_name = $_POST['first-name'];
+    $last_name = $_POST['last-name'];
+    $password = $_POST['password'];
+    $confirm = $_POST['confirm-password'];
+    $photo = "";
 
-include('./functions/functions.php');
+    include('./functions/functions.php');
+
+    $valid_username = existUsername($username) == 0;
+    $valid_email = existEmail($email) == 0;
+    $valid_passwords = $password == $confirm;
+
+    if ($valid_username && $valid_email && $valid_passwords) {
+        
+        $id = register($first_name, $last_name, $email, $username, $password);
+
+        if ($id !== -1) {
+            if (isset($_FILES["profile-picture"])) {
+                if ($_FILES["profile-picture"]["error"] > 0){
+                    /*
+                    // setCookie have to be called before anything is sent => don't echo anything
+                    switch ($_FILES["document"]['error']){
+                        case 1: // UPLOAD_ERR_INI_SIZE
+                            echo"ERROR, file is too heavy for the PHP server";
+                            break;
+                        case 2: // UPLOAD_ERR_FORM_SIZE
+                            echo "ERROR, file is too heavy for the HTML form";
+                            break;
+                        case 3: // UPLOAD_ERR_PARTIAL
+                            echo "ERROR, something stopped file upload";
+                            break;
+                        case 4: // UPLOAD_ERR_NO_FILE
+                            // echo "ERROR, no file selected"; // Not a problem => Don't print error message
+                            break;
+                        default : break;
+                    }
+                        */
+                } else {
+                    $deconstructed_file_name = explode('.',$_FILES["profile-picture"]["name"]);
+                    
+                    $actual_file_name = array_shift($deconstructed_file_name);
+                    
+                    $photo = "$id.".implode('.',$deconstructed_file_name);
+                    $new_file_dir = "./profile_pictures/$id.".implode('.',$deconstructed_file_name);
+                    $n = 1;
+                    
+                    while (is_dir($new_file_dir)) {
+                        $photo = "$id(".$n.").".implode('.',$deconstructed_file_name);
+                        $new_file_dir = "./profile_pictures/$id(".$n.").".implode('.',$deconstructed_file_name);
+                        $n++;
+                    }
+
+                    // echo $new_file_dir;
+                    
+                    move_uploaded_file($_FILES["profile-picture"]["tmp_name"], $new_file_dir);
+                    
+                    update_profile_picture($id, $photo);
+                }
+            }
+
+            header("Location: index.php");
+            setCookie(
+                name: "user",
+                value: "{\"pers_id\":\"$id\",\"pers_password\":\"$password\",\"pers_username\":\"$username\",\"pers_firstname\":\"$first_name\",\"pers_lastname\":\"$last_name\",\"pers_email\":\"$email\",\"pers_isadmin\":\"0\",\"pers_photo\":\"$photo\",\"pers_score\":\"0\"}",
+                path: "/"
+            );
+            die();
+        }
+    }
+}
 
 ?>
 
@@ -50,7 +118,7 @@ include('./functions/functions.php');
     </header>
 
     <main>
-        <form id="registration-form" action="registration_process.php" method="POST" enctype="multipart/form-data">
+        <form id="registration-form" action="registration.php" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-5">
                     <div class="row">
@@ -61,7 +129,7 @@ include('./functions/functions.php');
                     <div class="row">
                         <div class="col-12">
                             <label for="profile-picture">Profile Picture</label>
-                            <input id="profile-picture" class="form-control" name="profile-picture" type="file" accept="image/*" required>
+                            <input id="profile-picture" class="form-control" name="profile-picture" type="file" accept="image/*">
                         </div>
                     </div>
                 </div>
@@ -71,8 +139,8 @@ include('./functions/functions.php');
                             <label for="username">Username</label>
                             <div class="input-group">
                                 <input id="username" class="form-control" name="username" placeholder="Username" aria-label="Username" type="text" required>
-                                <input id="username-valid" type="hidden" style="display: none; visibility: hidden;" value="0">
-                                <span class="input-group-text" id="taken">No username</span>
+                                <input id="username-valid" type="hidden" style="display: none; visibility: hidden;" value="false">
+                                <span class="input-group-text" id="usernameTaken">No username</span>
                             </div>
 
                         </div>
@@ -92,7 +160,11 @@ include('./functions/functions.php');
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="email">Email</label>
-                            <input id="email" class="form-control" name="email" placeholder="Email" aria-label="Email" type="email" required>
+                            <div class="input-group">
+                                <input id="email" class="form-control" name="email" placeholder="Email" aria-label="Email" type="email" required>
+                                <input id="email-valid" type="hidden" style="display: none; visibility: hidden;" value="false">
+                                <span class="input-group-text" id="emailTaken">No email</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,6 +178,7 @@ include('./functions/functions.php');
                     <label for="confirm-password">Confirm password</label>
                     <input id="confirm-password" class="form-control" name="confirm-password" placeholder="Password" aria-label="Password" type="password" required>
                 </div>
+                <input id="password-valid" type="hidden" style="display: none; visibility: hidden;" value="false">
             </div>
             <div class="row">
                 <div class="col-12 text-center">

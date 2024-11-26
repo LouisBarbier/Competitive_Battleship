@@ -109,7 +109,7 @@ if (isset($_COOKIE["user"])) {
                     <a id=\"login\" href=\"login.html\" class=\"nav-link\" target=\"_blank\">Sign In</a>
                 </li>
                 <li class=\"nav-item\">
-                    <a href=\"registration.html\" class=\"nav-link\" target=\"_self\">Sign Up</a>
+                    <a href=\"registration.php\" class=\"nav-link\" target=\"_self\">Sign Up</a>
                 </li>";
             }
             
