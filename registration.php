@@ -1,3 +1,13 @@
+<?php
+
+if (isset($_POST['username'])) {
+    $username = "'".$_POST['username']."'";
+}
+
+include('./functions/functions.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +50,7 @@
     </header>
 
     <main>
-        <form action="registration_process.php" method="POST">
+        <form id="registration-form" action="registration_process.php" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-5">
                     <div class="row">
@@ -51,7 +61,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="profile-picture">Profile Picture</label>
-                            <input id="profile-picture" class="form-control" name="profile-picture" type="file" accept="image/*">
+                            <input id="profile-picture" class="form-control" name="profile-picture" type="file" accept="image/*" required>
                         </div>
                     </div>
                 </div>
@@ -60,7 +70,8 @@
                         <div class="form-group col-12">
                             <label for="username">Username</label>
                             <div class="input-group">
-                                <input id="username" class="form-control" name="username" placeholder="Username" aria-label="Username" type="text">
+                                <input id="username" class="form-control" name="username" placeholder="Username" aria-label="Username" type="text" required>
+                                <input id="username-valid" type="hidden" style="display: none; visibility: hidden;" value="0">
                                 <span class="input-group-text" id="taken">No username</span>
                             </div>
 
@@ -69,19 +80,19 @@
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="first-name">First Name</label>
-                            <input id="first-name" class="form-control" name="first-name" placeholder="First name" aria-label="First name" type="text">
+                            <input id="first-name" class="form-control" name="first-name" placeholder="First name" aria-label="First name" type="text" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="last-name">Last Name</label>
-                            <input id="last-name" class="form-control" name="last-name" placeholder="Last name" aria-label="Last name" type="text">
+                            <input id="last-name" class="form-control" name="last-name" placeholder="Last name" aria-label="Last name" type="text" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="email">Email</label>
-                            <input id="email" class="form-control" name="email" placeholder="Email" aria-label="Email" type="email">
+                            <input id="email" class="form-control" name="email" placeholder="Email" aria-label="Email" type="email" required>
                         </div>
                     </div>
                 </div>
@@ -89,16 +100,16 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="password">Password</label>
-                    <input id="password" class="form-control" name="password" placeholder="Password" aria-label="Password" type="password">
+                    <input id="password" class="form-control" name="password" placeholder="Password" aria-label="Password" type="password" required>
                 </div>
                 <div class="col-md-6">
                     <label for="confirm-password">Confirm password</label>
-                    <input id="confirm-password" class="form-control" name="confirm-password" placeholder="Password" aria-label="Password" type="password">
+                    <input id="confirm-password" class="form-control" name="confirm-password" placeholder="Password" aria-label="Password" type="password" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 text-center">
-                    <input id="submit-button" class="btn btn-primary m-3" type="submit" value="Register">
+                    <input id="submit-but" class="btn btn-primary" type="submit" value="Register">
                 </div>
             </div>
         </form>

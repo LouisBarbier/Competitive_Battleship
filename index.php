@@ -1,6 +1,6 @@
 <?php
 
-include('./functions/functionIndex.php');
+include('./functions/functions.php');
 
 if (isset($_COOKIE["user"])) {
 

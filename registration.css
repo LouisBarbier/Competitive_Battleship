@@ -1,6 +1,7 @@
 #profile-picture-visualizer {
     max-height: 150px;
     max-width: 150px;
+    border: solid 2px #DEE2E6;
 }
 
 #taken.red {
@@ -13,4 +14,20 @@
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
+}
+
+#submit-but {
+    border: none;
+    background-color: #70AD47;
+    color: white;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+#submit-but:hover {
+    background-color: #689e45;
+}
+
+#submit-but:active {
+    background-color: #5f8e3f;
 }
