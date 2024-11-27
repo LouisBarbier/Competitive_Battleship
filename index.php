@@ -56,7 +56,7 @@ if (isset($_COOKIE["user"])) {
 
     How many levels of headings are necessary?
         The only page that will contain more than 1 or 0 headings will be
-        tutorial.html that might contain 3 levels of headings :
+        tutorial.php that might contain 3 levels of headings :
             - The title of the page
             - Another level for the main titles (ex : How to play, The score system, etc...)
             - Another for secondary titles (ex : the different chapters of How to play)
@@ -97,13 +97,13 @@ if (isset($_COOKIE["user"])) {
                 <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.html" class="nav-link" target="_self">Tutorial</a>
+                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
             </li>
 
             <?php
             
             if ($connected) {
-                echo "<a href=\"editAccount.php\" class=\"nav-link\" target=\"_self\">Edit Account</a>";
+                echo "<li class=\"nav-item\"><a href=\"editAccount.php\" class=\"nav-link\" target=\"_self\">Edit Account</a></li>";
             } else {
                 echo "<li class=\"nav-item\">
                     <a id=\"login\" href=\"login.html\" class=\"nav-link\" target=\"_blank\">Sign In</a>
@@ -134,25 +134,29 @@ if (isset($_COOKIE["user"])) {
                         <tbody>
                             <?php
 
-                            for ($i = 1; $i < 11; $i++) {
+                            if ($connected) {
+                                for ($i = 1; $i < 11; $i++) {
 
-                                $battle_id = $i;
-                                $battle_startDate = "05/13/14";
-                                $opponant_name = "Test $i";
-
-                                $your_turn = random_int(0, 1);
-
-                                if ($your_turn) {
-                                    $continue_button_color = 'green';
-                                } else {
-                                    $continue_button_color = 'red';
+                                    $battle_id = $i;
+                                    $battle_startDate = "05/13/14";
+                                    $opponant_name = "Test $i";
+    
+                                    $your_turn = random_int(0, 1);
+    
+                                    if ($your_turn) {
+                                        $continue_button_color = 'green';
+                                    } else {
+                                        $continue_button_color = 'red';
+                                    }
+    
+                                    echo "<tr>
+                                            <th scope=\"row\">$battle_startDate</th>
+                                            <td>$opponant_name</td>
+                                            <td><a class=\"btn continue-button $continue_button_color\" role=\"button\" href=\"battle.php?id=$battle_id\" target=\"_self\">&blacktriangleright;</a></td>
+                                        </tr>";
                                 }
-
-                                echo "<tr>
-                                        <th scope=\"row\">$battle_startDate</th>
-                                        <td>$opponant_name</td>
-                                        <td><a class=\"btn continue-button $continue_button_color\" role=\"button\" href=\"battle.php?id=$battle_id\" target=\"_self\">&blacktriangleright;</a></td>
-                                    </tr>";
+                            } else {
+                                echo "<tr><td class=\"text-left\" colspan=\"3\"><div class=\"alert alert-warning\">Not connected</div></td></tr>";
                             }
 
                             ?>
@@ -175,7 +179,17 @@ if (isset($_COOKIE["user"])) {
                 </div>
                 <div>Start a new battle against someone your rank</div>
                 <div class="text-center my-2">
-                    <a id="battle-button" class="btn btn-lg" role="button" href="matchmaking.php" target="_self">BATTLE</a>
+                    
+                    <?php
+
+                    if ($connected) {
+                        echo "<a id=\"battle-button\" class=\"btn btn-lg\" role=\"button\" href=\"matchmaking.php\" target=\"_self\">BATTLE</a>";
+                    } else {
+                        echo "<div class=\"alert alert-warning\">Not connected</div>";
+                    }
+
+                    ?>
+                
                 </div>
             </div>
             <div id="profile" class="col custom-col mx-2 p-3 mw-100">
@@ -243,7 +257,7 @@ if (isset($_COOKIE["user"])) {
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.html" class="nav-link" target="_self">Terms</a>
+                <a href="terms.php" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 

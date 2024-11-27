@@ -27,7 +27,7 @@
                 <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.html" class="nav-link" target="_self" aria-current="page">Tutorial</a>
+                <a href="tutorial.php" class="nav-link" target="_self" aria-current="page">Tutorial</a>
             </li>
             <li class="nav-item">
                 <!--This <li> show the editAccount button only if we are already connected
@@ -48,7 +48,7 @@
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.html" class="nav-link" target="_self">Terms</a>
+                <a href="terms.php" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 

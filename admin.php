@@ -1,3 +1,27 @@
+<?php
+
+include('./functions/functions.php');
+
+// prevent the user from accessing the admin page if he is not logged in or if he isn't an admin
+if (isset($_COOKIE["user"])) {
+
+    $user = json_decode($_COOKIE["user"], true);
+
+    $pers_id = $user['pers_id'];
+    $pers_password = $user['pers_password'];
+
+    $connected = isValid($pers_id, $pers_password);
+
+    $pers_isadmin = $user['pers_isadmin'];
+
+    if (!$connected or !$pers_isadmin) {
+        header("Location: index.php");
+        die();
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +51,7 @@
                 <a href="#" class="nav-link active" target="_self" aria-current="page">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.html" class="nav-link" target="_self">Tutorial</a>
+                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
                 <!--This <li> show the editAccount button only if we are already connected
@@ -47,7 +71,7 @@
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.html" class="nav-link" target="_self">Terms</a>
+                <a href="terms.php" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 

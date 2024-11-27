@@ -1,5 +1,23 @@
 <?php
 
+include('./functions/functions.php');
+
+// prevent the user from creating an account if he is already logged in
+if (isset($_COOKIE["user"])) {
+
+    $user = json_decode($_COOKIE["user"], true);
+
+    $pers_id = $user['pers_id'];
+    $pers_password = $user['pers_password'];
+
+    $connected = isValid($pers_id, $pers_password);
+
+    if ($connected) {
+        header("Location: index.php");
+        die();
+    }
+}
+
 if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -8,8 +26,6 @@ if (isset($_POST['username'])) {
     $password = $_POST['password'];
     $confirm = $_POST['confirm-password'];
     $photo = "";
-
-    include('./functions/functions.php');
 
     $valid_username = existUsername($username) == 0;
     $valid_email = existEmail($email) == 0;
@@ -106,7 +122,7 @@ if (isset($_POST['username'])) {
                 <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
             </li>
             <li class="nav-item">
-                <a href="tutorial.html" class="nav-link" target="_self">Tutorial</a>
+                <a href="tutorial.php" class="nav-link" target="_self">Tutorial</a>
             </li>
             <li class="nav-item">
                 <a id="login" href="login.html" class="nav-link" target="_blank">Sign In</a>
@@ -198,7 +214,7 @@ if (isset($_POST['username'])) {
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.html" class="nav-link" target="_self">Terms</a>
+                <a href="terms.php" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 

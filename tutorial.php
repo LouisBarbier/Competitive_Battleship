@@ -1,3 +1,25 @@
+<?php
+
+include('./functions/functions.php');
+
+if (isset($_COOKIE["user"])) {
+
+    // echo $_COOKIE["user"];
+
+    $user = json_decode($_COOKIE["user"], true);
+
+    $pers_id = $user['pers_id'];
+    $pers_password = $user['pers_password'];
+
+    $connected = isValid($pers_id, $pers_password);
+
+    // echo "connected = $connected";
+} else {
+    $connected = 0;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +52,22 @@
             <li class="nav-item">
                 <a href="#" class="nav-link active" target="_self" aria-current="page">Tutorial</a>
             </li>
-            <li class="nav-item">
-                <!--This <li> show the editAccount button only if we are already connected
-                    If we are not, then it show the sign in and sign up buttons
-                -->
-                <a href="editAccount.php" class="nav-link" target="_self">Edit Account</a>
-            </li>
+
+            <?php
+            
+            if ($connected) {
+                echo "<li class=\"nav-item\"><a href=\"editAccount.php\" class=\"nav-link\" target=\"_self\">Edit Account</a></li>";
+            } else {
+                echo "<li class=\"nav-item\">
+                    <a id=\"login\" href=\"login.html\" class=\"nav-link\" target=\"_blank\">Sign In</a>
+                </li>
+                <li class=\"nav-item\">
+                    <a href=\"registration.php\" class=\"nav-link\" target=\"_self\">Sign Up</a>
+                </li>";
+            }
+            
+            ?>
+
         </ul>
     </header>
 
@@ -135,7 +167,7 @@
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
             <li class="nav-item">
-                <a href="terms.html" class="nav-link" target="_self">Terms</a>
+                <a href="terms.php" class="nav-link" target="_self">Terms</a>
             </li>
         </ul>
 
