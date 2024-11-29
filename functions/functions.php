@@ -31,6 +31,32 @@ function isValid ($pers_id, $pers_password) {
     return $connected;
 }
 
+function load_css_variables ($dark_mode) {
+    if ($dark_mode) {
+        echo ":root {
+            --body-bg-color: #3B3838;
+            --body-bg-color-hover: #404040;
+            --nav-bg-color: #787C7E;
+            --bd-color: white;
+            --tx-color: white;
+            --tx-color-inv: black;
+            --darker: rgba(255, 255, 255, 0.5);
+            --small-darker: rgba(255, 255, 255, 0.1);
+        }";
+    } else {
+        echo ":root {
+            --body-bg-color: #e3e3e1;
+            --body-bg-color-hover: #cacaca;
+            --nav-bg-color: #787C7E;
+            --bd-color: black;
+            --tx-color: black;
+            --tx-color-inv: white;
+            --darker: rgba(0, 0, 0, 0.5);
+            --small-darker: rgba(0, 0, 0, 0.1);
+        }";
+    }
+}
+
 function getNbOnline () {
     global $DB;
 

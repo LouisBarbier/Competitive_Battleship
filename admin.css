@@ -24,3 +24,7 @@ a {
     color: var(--tx-color);
     text-decoration: none;
 }
+
+.card-footer {
+    --bs-card-cap-bg: var(--small-darker);
+}

@@ -15,7 +15,8 @@ if (isset($_COOKIE["user"])) {
     $connected = false;
 }
 
-if ($connected) {
+// if ($connected) {
+if (false) {
     header("Location: index.php");
     die();
 }
@@ -108,25 +109,7 @@ if (isset($_POST['username'])) {
         
         <?php
 
-        if (isset($_COOKIE["dark_mode"]) && $_COOKIE["dark_mode"] === "1") {
-            echo ":root {
-                --body-bg-color: #3B3838;
-                --body-bg-color-hover: #404040;
-                --nav-bg-color: #787C7E;
-                --bd-color: white;
-                --tx-color: white;
-                --tx-color-inv: black;
-            }";
-        } else {
-            echo ":root {
-                --body-bg-color: #e3e3e1;
-                --body-bg-color-hover: #cacaca;
-                --nav-bg-color: #787C7E;
-                --bd-color: black;
-                --tx-color: black;
-                --tx-color-inv: white;
-            }";
-        }
+        load_css_variables(isset($_COOKIE["dark_mode"]) && $_COOKIE["dark_mode"] === "1");
 
         ?>
         

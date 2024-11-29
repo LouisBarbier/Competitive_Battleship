@@ -35,6 +35,8 @@ if (bright_mode != undefined && bright_mode != null) {
       root.style.setProperty('--bd-color', 'white');
       root.style.setProperty('--tx-color', 'white');
       root.style.setProperty('--tx-color-inv', 'black');
+      root.style.setProperty('--darker', 'rgba(255, 255, 255, 0.5)');
+      root.style.setProperty('--small-darker', 'rgba(255, 255, 255, 0.1)');
 
       bright_mode.alt = "light mode";
       bright_mode.src = "./common/images/heavy-bulb.png";
@@ -47,6 +49,8 @@ if (bright_mode != undefined && bright_mode != null) {
       root.style.setProperty('--bd-color', 'black');
       root.style.setProperty('--tx-color', 'black');
       root.style.setProperty('--tx-color-inv', 'white');
+      root.style.setProperty('--darker', 'rgba(0, 0, 0, 0.5)');
+      root.style.setProperty('--small-darker', 'rgba(0, 0, 0, 0.1)');
 
       bright_mode.alt = "dark mode";
       bright_mode.src = "./common/images/light-bulb.png";

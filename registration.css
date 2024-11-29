@@ -1,19 +1,26 @@
 #profile-picture-visualizer {
     max-height: 150px;
     max-width: 150px;
-    border: solid 2px #DEE2E6;
+}
+
+#profile-picture::file-selector-button {
+    background-color: var(--small-darker);
+}
+
+#profile-picture:hover::file-selector-button {
+    background-color: var(--darker);
 }
 
 .red {
     color: #721c24;
     background-color: #f8d7da;
-    border-color: #f5c6cb;
+    border-color: var(--bs-form-invalid-border-color);
 }
 
 .green {
     color: #155724;
     background-color: #d4edda;
-    border-color: #c3e6cb;
+    border-color: var(--bd-color);
 }
 
 #submit-but {
