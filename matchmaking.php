@@ -7,6 +7,16 @@
     <link rel="icon" type="image/svg+xml" href="common/images/competitive_battleship.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="battling_mode.css">
+    <style>
+        :root {
+            --body-bg-color: #e3e3e1;
+            --body-bg-color-hover: #cacaca;
+            --nav-bg-color: #787C7E;
+            --bd-color: black;
+            --tx-color: black;
+            --tx-color-inv: white;
+        }
+    </style>
 </head>
 <body>
     <!--Here players will be wait while the game try to get them against the closest player (in term of rank)
@@ -19,6 +29,9 @@
         </a>
 
         <ul class="nav nav-pills">
+            <li class="nav-item">
+                <img id="bright_mode" alt="dark mode" src="./common/images/light-bulb.png">
+            </li>
             <li class="nav-item">
                 <img src="" alt="Tutorial" class="bi me-2" width="40" height="32">
             </li>

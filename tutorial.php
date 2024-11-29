@@ -30,6 +30,16 @@ if (isset($_COOKIE["user"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="tutorial.css">
+    <style>
+        :root {
+            --body-bg-color: #e3e3e1;
+            --body-bg-color-hover: #cacaca;
+            --nav-bg-color: #787C7E;
+            --bd-color: black;
+            --tx-color: black;
+            --tx-color-inv: white;
+        }
+    </style>
 </head>
 <body>
     <!--Here new player will be able to understand how to play the game-->
@@ -41,14 +51,22 @@ if (isset($_COOKIE["user"])) {
 
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a href="index.php" class="nav-link" target="_self">Home</a>
+                <img id="bright_mode" alt="dark mode" src="./common/images/light-bulb.png">
             </li>
             <li class="nav-item">
-                <!--
-                    This button is accessible only if we are connected and if we are an admin
-                -->
-                <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
+                <a href="index.php" class="nav-link" target="_self">Home</a>
             </li>
+
+            <?php
+
+            if ($connected && ($user['pers_isadmin']==='1' || $user['pers_isadmin']===1 || $user['pers_isadmin']===true)) {
+                echo '<li class="nav-item">
+                    <a href="admin.php" class="nav-link" target="_self">Admin Page</a>
+                </li>';
+            }
+
+            ?>
+
             <li class="nav-item">
                 <a href="#" class="nav-link active" target="_self" aria-current="page">Tutorial</a>
             </li>
@@ -159,10 +177,10 @@ if (isset($_COOKIE["user"])) {
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center mt-auto">
         <div class="col-md-4 d-flex align-items-center">
-            <a href="#" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <a href="#" class="mb-3 me-2 mb-md-0 lh-1">
                 <img src="common/images/competitive_battleship.svg" alt="Logo" class="bi" width="30" height="30">
             </a>
-            <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Competitive Battleship</span>
+            <span class="mb-3 mb-md-0">&copy; 2024 Competitive Battleship</span>
         </div>
 
         <ul class="nav col-md-4 nav-pills justify-content-start">
@@ -173,18 +191,18 @@ if (isset($_COOKIE["user"])) {
 
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="ms-3">
-                <a class="text-body-secondary" href="https://www.facebook.com/juniata" title="Facebook" target="_blank">
-                    <img class="bi" width="24" height="24" src="common/images/facebook.svg" alt="Facebook Logo">
+                <a href="https://www.facebook.com/juniata" title="Facebook" target="_blank">
+                    <img width="24" height="24" src="common/images/facebook.svg" alt="Facebook Logo">
                 </a>
             </li>
             <li class="ms-3">
-                <a class="text-body-secondary" href="https://twitter.com/juniatacollege" title="Twitter / X" target="_blank">
-                    <img class="bi" width="24" height="24" src="common/images/x.svg" alt="Twitter / X Logo">
+                <a href="https://twitter.com/juniatacollege" title="Twitter / X" target="_blank">
+                    <img width="24" height="24" src="common/images/x.svg" alt="Twitter / X Logo">
                 </a>
             </li>
             <li class="ms-3">
-                <a class="text-body-secondary" href="https://github.com/LouisBarbier/Competitive_Battleship" title="GitHub" target="_blank">
-                    <img class="bi" width="24" height="24" src="common/images/github.svg" alt="GitHub Logo">
+                <a href="https://github.com/LouisBarbier/Competitive_Battleship" title="GitHub" target="_blank">
+                    <img width="24" height="24" src="common/images/github.svg" alt="GitHub Logo">
                 </a>
             </li>
         </ul>

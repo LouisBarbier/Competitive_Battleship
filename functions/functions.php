@@ -155,4 +155,17 @@ function update_profile_picture ($pers_id, $pers_photo = null) {
     $DB->query($sql);
 }
 
+function load_more ($quantity, $offset) {
+    global $DB;
+
+    $sql = "SELECT pers_id, pers_username, pers_firstname, pers_lastname, pers_email, pers_datecre, pers_photo, count(bat_id) AS pers_nbbattle, pers_score
+		FROM Person
+            LEFT JOIN Battle ON (pers_id = bat_player1 OR pers_id = bat_player2)
+		GROUP BY pers_id
+		ORDER BY pers_id DESC
+		LIMIT $quantity OFFSET ".$offset;
+
+    return $DB->query($sql);
+}
+
 ?>

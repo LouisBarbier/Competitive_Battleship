@@ -11,15 +11,15 @@
 }
 
 #started_games .table {
-    --bs-table-bg: #e3e3e100;
+    --bs-table-bg: var(--body-bg-color);
 }
 
 #started_games .table tr {
     border-bottom: solid 3px var(--bd-color);
 }
 
-#started_games .table tbody tr:hover {
-    --bs-table-bg: #cacaca;
+#started_games .table tbody tr:not(#tr-alert):hover {
+    --bs-table-bg: var(--body-bg-color-hover);
 }
 
 .continue-button {
@@ -94,10 +94,7 @@ span.nb-online {
     background-color: #8aad84;
 }
 
-#profile {
-    flex: 0 0 auto;
-    width: 25%;
-}
+/* PROFILE */
 
 #profile-picture {
     max-height: 150px;

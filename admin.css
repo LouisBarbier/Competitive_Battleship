@@ -1,0 +1,26 @@
+.custom-col {
+    border: solid 3px var(--bd-color);
+    border-radius: 1.5vw;
+    background-color: var(--body-bg-color);
+    cursor: pointer;
+}
+
+.custom-col:hover {
+    background-color: var(--body-bg-color-hover);
+}
+
+.profile-picture {
+    margin: 1vw auto 0 auto;
+    height: 150px;
+    width: 150px;
+}
+
+span.label {
+    display: inline-block;
+    width: 6vw;
+}
+
+a {
+    color: var(--tx-color);
+    text-decoration: none;
+}

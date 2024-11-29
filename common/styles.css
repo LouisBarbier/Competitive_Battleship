@@ -1,11 +1,3 @@
-:root {
-    --body-bg-color: #e3e3e1;
-    --nav-bg-color: #787C7E;
-    --bd-color: black;
-    --tx-color: black;
-    --tx-color-inv: white;
-}
-
 body {
     background-color: var(--body-bg-color);
     margin-bottom: 85px;
@@ -18,6 +10,10 @@ header {
     padding: 1.5rem;
     border-bottom: solid 5px var(--bd-color);
     background-color: var(--nav-bg-color);
+}
+
+.fs-4 {
+    color: var(--tx-color);
 }
 
 .nav-link {
@@ -36,8 +32,18 @@ header {
 }
 
 .active {
-    color: var(--tx-color-inv);
+    --bs-nav-pills-link-active-color: var(--tx-color-inv);
     --bs-nav-pills-link-active-bg: var(--bd-color);
+}
+
+#bright_mode {
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#bright_mode:hover {
+    border: solid 2px var(--bd-color);
 }
 
 main {
@@ -51,4 +57,5 @@ footer {
     padding: 1.5rem;
     border-top: solid 5px var(--bd-color);
     background-color: var(--nav-bg-color);
+    color: var(--tx-color);
 }
