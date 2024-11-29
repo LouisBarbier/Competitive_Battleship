@@ -11,7 +11,7 @@ if (loginElem != undefined && loginElem != null) {
     var left=(screen.width/2)-(width/2);
     var features = 'height='+height+',width='+width+',top='+top+',left='+left+',toolbar=1,Location=0,Directories=0,Status=0,menubar=1,Scrollbars=1,Resizable=1';
     
-    window.open("login.html", "Log in - Competitive Battleship", features);
+    window.open("login.php", "Log in - Competitive Battleship", features);
   });
 }
 
@@ -36,7 +36,10 @@ if (bright_mode != undefined && bright_mode != null) {
       root.style.setProperty('--tx-color', 'white');
       root.style.setProperty('--tx-color-inv', 'black');
 
-      bright_mode.alt = "light mode"
+      bright_mode.alt = "light mode";
+      bright_mode.src = "./common/images/heavy-bulb.png";
+
+      document.cookie = "dark_mode=1; path=/";
     } else {
       root.style.setProperty('--body-bg-color', '#e3e3e1');
       root.style.setProperty('--body-bg-color-hover', '#cacaca');
@@ -45,7 +48,10 @@ if (bright_mode != undefined && bright_mode != null) {
       root.style.setProperty('--tx-color', 'black');
       root.style.setProperty('--tx-color-inv', 'white');
 
-      bright_mode.alt = "dark mode"
+      bright_mode.alt = "dark mode";
+      bright_mode.src = "./common/images/light-bulb.png";
+
+      document.cookie = "dark_mode=0; path=/";
     }
   });
 }

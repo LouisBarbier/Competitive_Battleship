@@ -24,6 +24,7 @@
 
 .continue-button {
     font-weight: bold;
+    color: black;
 }
 
 .continue-button.green {
@@ -82,6 +83,7 @@ span.nb-online {
     border: solid 2px rgb(0, 176, 80);
     background-color: #9BC696;
     font-weight: bold;
+    color: black;
 }
 
 #battle-button:hover {

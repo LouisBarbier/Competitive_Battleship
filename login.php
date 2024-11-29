@@ -9,14 +9,31 @@
     <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="login.css">
     <style>
-        :root {
-            --body-bg-color: #e3e3e1;
-            --body-bg-color-hover: #cacaca;
-            --nav-bg-color: #787C7E;
-            --bd-color: black;
-            --tx-color: black;
-            --tx-color-inv: white;
+        
+        <?php
+
+        if (isset($_COOKIE["dark_mode"]) && $_COOKIE["dark_mode"] === "1") {
+            echo ":root {
+                --body-bg-color: #3B3838;
+                --body-bg-color-hover: #404040;
+                --nav-bg-color: #787C7E;
+                --bd-color: white;
+                --tx-color: white;
+                --tx-color-inv: black;
+            }";
+        } else {
+            echo ":root {
+                --body-bg-color: #e3e3e1;
+                --body-bg-color-hover: #cacaca;
+                --nav-bg-color: #787C7E;
+                --bd-color: black;
+                --tx-color: black;
+                --tx-color-inv: white;
+            }";
         }
+
+        ?>
+        
     </style>
 </head>
 <body class="text-center">

@@ -1,6 +1,14 @@
 body {
     background-color: var(--body-bg-color);
     margin-bottom: 85px;
+    --bs-body-bg: var(--tx-color-inv);
+    --bs-border-color:  var(--bd-color);
+    --bs-heading-color: var(--tx-color);
+    --bs-body-color: var(--tx-color);
+    --bs-secondary-color: var(--tx-color);
+    --bs-emphasis-color: var(--tx-color);
+    --bs-link-color: var(--tx-color);
+    --bs-link-hover-color: var(--tx-color);
 }
 
 header {
