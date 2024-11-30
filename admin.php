@@ -113,9 +113,7 @@ if (false) {
         $score = 0;
     }
 
-    if ($nbbattle != "" && $nbbattle != 0) {
-        array_push($conditions, "pers_nbbattle >= $nbbattle");
-    } else {
+    if ($nbbattle == "") {
         $nbbattle = 0;
     }
 
