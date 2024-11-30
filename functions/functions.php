@@ -181,15 +181,29 @@ function update_profile_picture ($pers_id, $pers_photo = null) {
     $DB->query($sql);
 }
 
-function load_more ($quantity, $offset) {
+function load_more ($quantity, $offset, $conditions=array(), $condition_nbbattle=0) {
     global $DB;
+
+    if (count($conditions) > 0) {
+        $conditions_str = "WHERE " . implode(" AND ", $conditions);
+    } else {
+        $conditions_str = "";
+    }
+
+    if ($condition_nbbattle > 0) {
+        $condition_nbbattle_str = "HAVING pers_nbbattle >= $condition_nbbattle";
+    } else {
+        $condition_nbbattle_str = "";
+    }
 
     $sql = "SELECT pers_id, pers_username, pers_firstname, pers_lastname, pers_email, pers_datecre, pers_photo, count(bat_id) AS pers_nbbattle, pers_score
 		FROM Person
             LEFT JOIN Battle ON (pers_id = bat_player1 OR pers_id = bat_player2)
+        $conditions_str
 		GROUP BY pers_id
+        $condition_nbbattle_str
 		ORDER BY pers_id DESC
-		LIMIT $quantity OFFSET ".$offset;
+		LIMIT $quantity OFFSET $offset";
 
     return $DB->query($sql);
 }

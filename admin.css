@@ -1,3 +1,43 @@
+#research-form {
+    margin-bottom: 1.5rem;
+    z-index: -1;
+}
+
+#research-form>input{
+    display: inline-block;
+}
+
+#research-form>input[type="text"]{
+    width: 40%;
+}
+
+#research-form>input[type="number"]{
+    width: 7rem;
+}
+
+#research-form>input[type="date"]{
+    width: 14%;
+}
+
+#submit-but {
+    /* position: relative; bottom: 3px;
+    display: inline-block; */
+    border: none;
+    background-color: #70AD47;
+    color: white;
+    font-size: 1.9rem;
+    height: 100%;
+    width: 100%;
+}
+
+#submit-but:hover {
+    background-color: #689e45;
+}
+
+#submit-but:active {
+    background-color: #5f8e3f;
+}
+
 .profile-picture {
     margin: 1vw auto 0 auto;
     height: 150px;

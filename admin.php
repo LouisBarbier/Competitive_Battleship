@@ -85,68 +85,144 @@ if (false) {
         </ul>
     </header>
 
-    <main class="container">
-        <div id="researcher" class="row">
-        
-        </div>
-        <div class="row">
-            <div id="users-list" class="row row-cols-4">
+    <?php
 
-                <?php
+    $username = "";
+    $score = 0;
+    $nbbattle = 0;
+    $datecre_start = "";
+    $datecre_end = "";
+    
+    if (isset($_POST['username'])) {
+        $username = $_POST['username'];
+        $score = $_POST['score'];
+        $nbbattle = $_POST['nbbattle'];
+        $datecre_start = $_POST['datecre_start'];
+        $datecre_end = $_POST['datecre_end'];
+    }
 
-                $sql_result = load_more(8, 0);
+    $conditions = array();
 
-                if ($sql_result) {
-                    foreach ($sql_result as $row) {
-                        echo '<div class="col mb-4">
-                            <a class="card h-100 text-center" href="#">';
+    if ($username != "") {
+        array_push($conditions, "pers_username LIKE '%$username%'");
+    }
 
-                                if (($row["pers_photo"] !== "") and ($row["pers_photo"] !== null)) {
-                                    echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/' . $row["pers_photo"] . '">';
-                                } else {
-                                    echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/default.png">';
-                                }
+    if ($score != "" && $score != 0) {
+        array_push($conditions, "pers_score >= $score");
+    } else {
+        $score = 0;
+    }
 
-                                echo '<div class="card-body">
-                                    <h5 class="card-title fw-bold">' . $row["pers_username"] . '</h5>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="text-start list-group-item">
-                                            <span class="label">First name :</span>
-                                            ' . $row["pers_firstname"] . '
-                                        </li>
-                                        <li class="text-start list-group-item">
-                                            <span class="label">Last name :</span>
-                                            ' . $row["pers_lastname"] . '
-                                        </li>
-                                        <li class="text-start list-group-item">
-                                            <span class="label">Email :</span>
-                                            ' . $row["pers_email"] . '
-                                        </li>
-                                        <li class="text-start list-group-item">
-                                            <div class="row">
-                                                <div class="col text-start">
-                                                    <span class="label">Score :</span>
-                                                    ' . $row["pers_score"] . '
-                                                </div>
-                                                <div class="col text-end">
-                                                    <span class="label">Battle :</span>
-                                                    ' . $row["pers_nbbattle"] . '
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Account created :<br>' . date("m/d/Y H:i:s", strtotime($row["pers_datecre"])) . '</small>
-                                </div>
-                            </a>
-                        </div>';
-                    }
-                }
-                
-                ?>
+    if ($nbbattle != "" && $nbbattle != 0) {
+        array_push($conditions, "pers_nbbattle >= $nbbattle");
+    } else {
+        $nbbattle = 0;
+    }
 
+    if ($datecre_start != "") {
+        array_push($conditions, "pers_datecre >= $datecre_start");
+    }
+
+    if ($datecre_end != "") {
+        array_push($conditions, "pers_datecre <= $datecre_end");
+    }
+
+    echo '<main class="container">
+        <input id="current_username" type="hidden" value="' . $username . '">
+        <input id="current_score" type="hidden" value="' . $score . '">
+        <input id="current_nbbattle" type="hidden" value="' . $nbbattle . '">
+        <input id="current_datecre_start" type="hidden" value="' . $datecre_start . '">
+        <input id="current_datecre_end" type="hidden" value="' . $datecre_end . '">
+
+        <form id="research-form" class="row text-center" action="admin.php" method="POST">
+            <div class="col-4">
+                <div class="form-floating">
+                    <input id="username" class="form-control" name="username" type="text" placeholder="username" value="' . $username . '">
+                    <label for="username">Username</label>
+                </div>
             </div>
+            <div class="col">
+                <div class="form-floating">
+                    <input id="score" class="form-control" name="score" type="number" min="0" placeholder="1234" value="' . $score . '">
+                    <label for="score">Score</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating">
+                    <input id="nbbattle" class="form-control" name="nbbattle" type="number" min="0" placeholder="1234" value="' . $nbbattle . '">
+                    <label for="nbbattle">Battle</label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-floating">
+                    <input id="datecre_start" class="form-control" name="datecre_start" type="date" placeholder="01/01/2024" value="' . $datecre_start . '">
+                    <label for="datecre_start">Created after</label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-floating">
+                    <input id="datecre_end" class="form-control" name="datecre_end" type="date" placeholder="01/01/2025" value="' . $datecre_end . '">
+                    <label for="datecre_end">Created before</label>
+                </div>
+            </div>
+            <div class="col-1">
+                <button id="submit-but" class="btn" type="submit">&telrec;</button>
+            </div>
+        </form>
+        <div id="users-list" class="row text-center row-cols-4">';
+
+            $sql_result = load_more(8, 0, $conditions, $nbbattle);
+
+            if ($sql_result) {
+                foreach ($sql_result as $row) {
+                    echo '<div class="col mb-4">
+                        <a class="card h-100 text-center" href="#">';
+
+                            if (($row["pers_photo"] !== "") and ($row["pers_photo"] !== null)) {
+                                echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/' . $row["pers_photo"] . '">';
+                            } else {
+                                echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/default.png">';
+                            }
+
+                            echo '<div class="card-body">
+                                <h5 class="card-title fw-bold">' . $row["pers_username"] . '</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="text-start list-group-item">
+                                        <span class="label">First name :</span>
+                                        ' . $row["pers_firstname"] . '
+                                    </li>
+                                    <li class="text-start list-group-item">
+                                        <span class="label">Last name :</span>
+                                        ' . $row["pers_lastname"] . '
+                                    </li>
+                                    <li class="text-start list-group-item">
+                                        <span class="label">Email :</span>
+                                        ' . $row["pers_email"] . '
+                                    </li>
+                                    <li class="text-start list-group-item">
+                                        <div class="row">
+                                            <div class="col text-start">
+                                                <span class="label">Score :</span>
+                                                ' . $row["pers_score"] . '
+                                            </div>
+                                            <div class="col text-end">
+                                                <span class="label">Battle :</span>
+                                                ' . $row["pers_nbbattle"] . '
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Account created :<br>' . date("m/d/Y H:i:s", strtotime($row["pers_datecre"])) . '</small>
+                            </div>
+                        </a>
+                    </div>';
+                }
+            }
+            
+            ?>
+
         </div>
     </main>
 

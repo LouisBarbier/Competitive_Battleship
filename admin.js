@@ -1,6 +1,34 @@
 const users_list_elem = document.getElementById('users-list');
 const template_user = document.getElementById('template-user').innerHTML.split('@');
 
+const current_username = document.getElementById("current_username").value;
+var current_score = parseInt(document.getElementById("current_score").value);
+var current_nbbattle = parseInt(document.getElementById("current_nbbattle").value);
+const current_datecre_start = document.getElementById("current_datecre_start").value;
+const current_datecre_end = document.getElementById("current_datecre_end").value;
+
+var current_conditions = [];
+
+if (current_username != "") {
+    current_conditions.push("pers_username LIKE '%" + current_username + "%'");
+}
+
+if (!isNaN(current_score) && current_score != 0) {
+    current_conditions.push("pers_score >= " + current_score);
+}
+
+if (isNaN(current_nbbattle)) {
+    current_nbbattle = 0;
+}
+
+if (current_datecre_start != "") {
+    current_conditions.push("pers_datecre >= " + current_datecre_start);
+}
+
+if (current_datecre_end != "") {
+    current_conditions.push("pers_datecre <= " + current_datecre_end);
+}
+
 // console.log(template_user);
 
 var currently_loaded = document.querySelectorAll('.row>.col>.card').length;
@@ -68,7 +96,11 @@ function loadMore () {
 	var fetchOptions = {
 		method: "POST",
 		headers: { 'Content-Type' : 'application/json' },
-		body: JSON.stringify({ offset: currently_loaded})
+		body: JSON.stringify({
+            offset: currently_loaded,
+            conditions: current_conditions,
+            nbbattle: current_nbbattle
+        })
 	};
 	
 	// console.log(fetchOptions);
@@ -91,7 +123,7 @@ function loadMore () {
 
 window.addEventListener('scroll',()=>{
     const {scrollTop,clientHeight,scrollHeight} = document.documentElement;
-    if ((scrollTop+clientHeight)>=scrollHeight && loaded) {
+    if ((scrollTop+clientHeight)>=scrollHeight*0.9 && loaded) {
         loaded = false;
         loadMore();
     }
