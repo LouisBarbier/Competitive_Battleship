@@ -86,102 +86,67 @@ if (false) {
     </header>
 
     <main class="container">
-        <div id="researcher" class="row"></div>
+        <div id="researcher" class="row">
+        
+        </div>
         <div class="row">
-            <?php
+            <div id="users-list" class="row row-cols-4">
 
-            $sql_result = load_more(21, 0);
+                <?php
 
-            /*
-            if ($sql_result) {
+                $sql_result = load_more(8, 0);
 
-                $i = 0;
-
-                foreach ($sql_result as $row) {
-                    if ($i % 3 == 0) {
-                        echo '<div class="row">';
-                    }
-
-                    echo '<a class="col custom-col m-2 p-3" href="battle.php">
-                        <div class="row">
-                            <div class="col">';
+                if ($sql_result) {
+                    foreach ($sql_result as $row) {
+                        echo '<div class="col mb-4">
+                            <a class="card h-100 text-center" href="#">';
 
                                 if (($row["pers_photo"] !== "") and ($row["pers_photo"] !== null)) {
-                                    echo '<img class="img-fluid profile-picture" alt="profile picture" src="profile_pictures/' . $row["pers_photo"] . '">';
+                                    echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/' . $row["pers_photo"] . '">';
                                 } else {
-                                    echo '<img class="img-fluid profile-picture" alt="profile picture" src="profile_pictures/default.png">';
+                                    echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/default.png">';
                                 }
-                    
-                            echo '</div>
-                            <div class="col">
-                                <span class="label">rank:</span>
-                                ' . $row["pers_score"] . '
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span class="label">username:</span>
-                                ' . $row["pers_username"] . '
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span class="label">first name:</span>
-                                ' . $row["pers_firstname"] . '
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span class="label">last name:</span>
-                                ' . $row["pers_lastname"] . '
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span class="label">email:</span>
-                                ' . $row["pers_email"] . '
-                            </div>
-                        </div>
-                    </a>';
 
-                    if (($i % 3 == 2) or ($i == mysqli_num_rows($sql_result) - 1)) {
-                        echo '</div>';
+                                echo '<div class="card-body">
+                                    <h5 class="card-title fw-bold">' . $row["pers_username"] . '</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="text-start list-group-item">
+                                            <span class="label">First name :</span>
+                                            ' . $row["pers_firstname"] . '
+                                        </li>
+                                        <li class="text-start list-group-item">
+                                            <span class="label">Last name :</span>
+                                            ' . $row["pers_lastname"] . '
+                                        </li>
+                                        <li class="text-start list-group-item">
+                                            <span class="label">Email :</span>
+                                            ' . $row["pers_email"] . '
+                                        </li>
+                                        <li class="text-start list-group-item">
+                                            <div class="row">
+                                                <div class="col text-start">
+                                                    <span class="label">Score :</span>
+                                                    ' . $row["pers_score"] . '
+                                                </div>
+                                                <div class="col text-end">
+                                                    <span class="label">Battle :</span>
+                                                    ' . $row["pers_nbbattle"] . '
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Account created :<br>' . date("m/d/Y H:i:s", strtotime($row["pers_datecre"])) . '</small>
+                                </div>
+                            </a>
+                        </div>';
                     }
-
-                    $i++;
                 }
-            }
-            */
+                
+                ?>
 
-            if ($sql_result) {
-                echo '<div class="row row-cols-4">';
-
-                foreach ($sql_result as $row) {
-                    echo '<div class="col mb-4">
-                        <div class="card h-100 text-center">'; // mb-3 p-3
-
-                            if (($row["pers_photo"] !== "") and ($row["pers_photo"] !== null)) {
-                                echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/' . $row["pers_photo"] . '">';
-                            } else {
-                                echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/default.png">';
-                            }
-
-                            echo '<div class="card-body">
-                                <h5 class="card-title">' . $row["pers_username"] . '</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Account created in ' . $row["pers_datecre"] . '</small>
-                            </div>
-                        </div>
-                    </div>';
-                }
-
-                echo '</div>';
-            }
-            
-            ?>
-            
+            </div>
         </div>
     </main>
 
@@ -217,6 +182,46 @@ if (false) {
             </li>
         </ul>
     </footer>
+
+    <template id="template-user">
+        <a class="card h-100 text-center" href="#">
+            <img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/@pers_photo@">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">@pers_username@</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="text-start list-group-item">
+                        <span class="label">First name :</span>
+                        @pers_firstname@
+                    </li>
+                    <li class="text-start list-group-item">
+                        <span class="label">Last name :</span>
+                        @pers_lastname@
+                    </li>
+                    <li class="text-start list-group-item">
+                        <span class="label">Email :</span>
+                        @pers_email@
+                    </li>
+                    <li class="text-start list-group-item">
+                        <div class="row">
+                            <div class="col text-start">
+                                <span class="label">Score :</span>
+                                @pers_score@
+                            </div>
+                            <div class="col text-end">
+                                <span class="label">Battle :</span>
+                                @pers_nbbattle@
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Account created :<br>@pers_datecre@</small>
+            </div>
+        </a>
+    </template>
+
+    <script src="admin.js"></script>
     <script src="./common/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

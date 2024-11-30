@@ -8,7 +8,7 @@ $json = json_decode(file_get_contents('php://input'), true);
 
 $data = array("results" => array());
 
-$sql_result = load_more(6, $json['offset']);
+$sql_result = load_more(2, $json['offset']);
 
 // print_r($rqt);
 if ($sql_result) {

@@ -30,31 +30,37 @@
 .continue-button.green {
     border: solid 2px rgb(0, 176, 80);
     background-color: #9BC696;
+    color: black;
 }
 
 .continue-button.red {
     border: solid 2px rgb(255, 67, 67);
     background-color: #FF9797;
+    color: black;
 }
 
 .continue-button.green:hover {
     border-color: rgb(0, 176, 70);
     background-color: #90b78b;
+    color: black;
 }
 
 .continue-button.red:hover {
     border-color: rgb(232, 60, 60);
     background-color: #ec8b8b;
+    color: black;
 }
 
 .continue-button.green:active {
     border-color: rgb(0, 134, 60);
     background-color: #8aad84;
+    color: black;
 }
 
 .continue-button.red:active {
     border-color: rgb(196, 51, 51);
     background-color: #d57e7e;
+    color: black;
 }
 
 #date-col {
