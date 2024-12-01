@@ -12,6 +12,8 @@
         
         <?php
 
+        include('./functions/functions.php');
+        
         load_css_variables(isset($_COOKIE["dark_mode"]) && $_COOKIE["dark_mode"] === "1");
 
         ?>

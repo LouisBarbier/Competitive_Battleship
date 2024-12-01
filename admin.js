@@ -49,6 +49,9 @@ function addNewUser (user){
     let newUserContent = "";
     for (user_part of template_user) {
         switch (user_part) {
+            case 'pers_id':
+                newUserContent += user.pers_id;
+                break;
             case 'pers_photo':
                 if ((user.pers_photo != null) && (user.pers_photo != "")) {
                     newUserContent += user.pers_photo;

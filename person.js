@@ -3,15 +3,15 @@ const url_email = "functions/checkEmail.php";
 
 const usernameElem = document.getElementById('username');
 const emailElem = document.getElementById('email');
-const passwordElem = document.getElementById('password');
-const confirmElem = document.getElementById('confirm-password');
+
+const originalUsername = usernameElem.value;
+const originalEmail = emailElem.value;
 
 const usernameStatus = document.getElementById("usernameTaken");
 const emailStatus = document.getElementById("emailTaken");
 
 var timerUsername = null;
 var timerEmail = null;
-var timerPassword = null;
 
 // Check if someone already has this username
 function checkUsername () {
@@ -21,6 +21,12 @@ function checkUsername () {
         usernameStatus.textContent = "No username";
         usernameStatus.classList.remove("red");
         usernameStatus.classList.remove("green");
+    } else if (usernameElem.value == originalUsername) {
+        document.getElementById('username-valid').value = true;
+        usernameStatus.textContent = "Username free";
+        usernameStatus.classList.remove("red");
+        usernameStatus.classList.add("green");
+        usernameElem.classList.remove("is-invalid");
     } else {
         var fetchOptions = {
             method: "POST",
@@ -87,6 +93,12 @@ function checkEmail () {
         emailStatus.textContent = "No email";
         emailStatus.classList.remove("red");
         emailStatus.classList.remove("green");
+        emailElem.classList.remove("is-invalid");
+    } else if (emailElem.value == originalEmail) {
+        document.getElementById('email-valid').value = true;
+        emailStatus.textContent = "Email free";
+        emailStatus.classList.remove("red");
+        emailStatus.classList.add("green");
         emailElem.classList.remove("is-invalid");
     } else {
         var fetchOptions = {
@@ -163,76 +175,29 @@ function changeProfilePicture () {
 document.getElementById('profile-picture').addEventListener('change', changeProfilePicture);
 
 
-// Check if the passwords are the same
-function checkPasswords () {
-    document.getElementById('password-valid').value = (passwordElem.value != "" && confirmElem.value != "" && passwordElem.value == confirmElem.value);
-
-    if (passwordElem.value != "" && confirmElem.value != "" && passwordElem.value != confirmElem.value) {
-        confirmElem.classList.add("is-invalid");
-    } else {
-        confirmElem.classList.remove("is-invalid");
-    }
-
-    timerPassword = null;
-}
-
-passwordElem.addEventListener('keyup', function () {
-    if (timerPassword == null) {
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-    else {
-        window.clearTimeout(timerPassword);
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-});
-passwordElem.addEventListener('change', function () {
-    if (timerPassword == null) {
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-    else {
-        window.clearTimeout(timerPassword);
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-});
-confirmElem.addEventListener('keyup', function () {
-    if (timerPassword == null) {
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-    else {
-        window.clearTimeout(timerPassword);
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-});
-confirmElem.addEventListener('change', function () {
-    if (timerPassword == null) {
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-    else {
-        window.clearTimeout(timerPassword);
-        timerPassword = setTimeout(checkPasswords, 1000);
-    }
-});
-
-
 // Check the form one last time before submitting
-document.getElementById('registration-form').addEventListener('submit', function(event){
+document.getElementById('modification-form').addEventListener('submit', function(event){
     // event.preventDefault();
-    if (document.getElementById('username-valid').value !== "true") {
-        usernameElem.focus();
-        event.preventDefault();
-    } else if (document.getElementById('email-valid').value !== "true") {
-        emailElem.focus();
-        event.preventDefault();
-    } else if (document.getElementById('password-valid').value !== "true") {
-        confirmElem.focus();
-        event.preventDefault();
+    if (document.getElementById('delete-user').value == 0) {
+        if (document.getElementById('username-valid').value !== "true") {
+            usernameElem.focus();
+            event.preventDefault();
+        } else if (document.getElementById('email-valid').value !== "true") {
+            emailElem.focus();
+            event.preventDefault();
+        }
     }
 });
 
+document.getElementById('delete-but').addEventListener('click', function(){
+    if (confirm("Are you sure you want to delete " + originalUsername + "'s account ?")) {
+        document.getElementById('delete-user').value = 1;
+        document.getElementById('modification-form').submit();
+    }
+});
 
 window.onload = function () {
     checkUsername();
     checkEmail();
-    checkPasswords();
     changeProfilePicture();
 };

@@ -17,8 +17,8 @@ if (isset($_COOKIE["user"])) {
     $connected = false;
 }
 
-// if (!$connected || !$pers_isadmin) {
-if (false) {
+if (!$connected || !$pers_isadmin) {
+// if (false) {
     header("Location: index.php");
     die();
 }
@@ -174,7 +174,7 @@ if (false) {
             if ($sql_result) {
                 foreach ($sql_result as $row) {
                     echo '<div class="col mb-4">
-                        <a class="card h-100 text-center" href="#">';
+                        <a class="card h-100 text-center" href="person.php?id=' . $row["pers_id"] . '">';
 
                             if (($row["pers_photo"] !== "") and ($row["pers_photo"] !== null)) {
                                 echo '<img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/' . $row["pers_photo"] . '">';
@@ -258,7 +258,7 @@ if (false) {
     </footer>
 
     <template id="template-user">
-        <a class="card h-100 text-center" href="#">
+        <a class="card h-100 text-center" href="person.php?id=@pers_id@">
             <img class="card-img-top profile-picture" alt="profile picture" src="profile_pictures/@pers_photo@">
             <div class="card-body">
                 <h5 class="card-title fw-bold">@pers_username@</h5>

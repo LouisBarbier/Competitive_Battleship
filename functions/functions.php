@@ -167,6 +167,14 @@ function register ($pers_firstname, $pers_lastname, $pers_email, $pers_username,
     return $pers_id;
 }
 
+function update_person ($pers_id, $pers_firstname, $pers_lastname, $pers_email, $pers_username) {
+    global $DB;
+
+    $sql = "UPDATE Person SET pers_firstname = '$pers_firstname', pers_lastname = '$pers_lastname', pers_email = '$pers_email', pers_username = '$pers_username' WHERE pers_id = $pers_id";
+
+    $DB->query($sql);
+}
+
 function update_profile_picture ($pers_id, $pers_photo = null) {
     global $DB;
 
@@ -177,6 +185,14 @@ function update_profile_picture ($pers_id, $pers_photo = null) {
     }
 
     $sql = "UPDATE Person SET pers_photo = $pers_photo_sql WHERE pers_id = $pers_id";
+
+    $DB->query($sql);
+}
+
+function delete_user ($pers_id) {
+    global $DB;
+
+    $sql = "DELETE FROM Person WHERE pers_id = $pers_id";
 
     $DB->query($sql);
 }
@@ -206,6 +222,17 @@ function load_more ($quantity, $offset, $conditions=array(), $condition_nbbattle
 		LIMIT $quantity OFFSET $offset";
 
     return $DB->query($sql);
+}
+
+function getUser ($id) {
+    global $DB;
+
+    $sql = "SELECT pers_id, pers_username, pers_firstname, pers_lastname, pers_email, pers_datecre, pers_photo, count(bat_id) AS pers_nbbattle, pers_score
+		FROM Person
+            LEFT JOIN Battle ON (pers_id = bat_player1 OR pers_id = bat_player2)
+        WHERE pers_id = $id";
+
+    return $DB->query($sql)->fetch_assoc();
 }
 
 ?>

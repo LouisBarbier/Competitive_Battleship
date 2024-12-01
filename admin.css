@@ -38,6 +38,10 @@
     background-color: #5f8e3f;
 }
 
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--darker);
+}
+
 .profile-picture {
     margin: 1vw auto 0 auto;
     height: 150px;

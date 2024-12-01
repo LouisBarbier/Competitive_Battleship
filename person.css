@@ -1,0 +1,55 @@
+#profile-picture-visualizer {
+    max-height: 150px;
+    max-width: 150px;
+}
+
+#profile-picture::file-selector-button {
+    background-color: var(--small-darker);
+}
+
+#profile-picture:hover::file-selector-button {
+    background-color: var(--darker);
+}
+
+.red {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: var(--bs-form-invalid-border-color);
+}
+
+.green {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: var(--bd-color);
+}
+
+input.btn-submit {
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+#confirm-but {
+    background-color: #70AD47;
+}
+
+#delete-but {
+    background-color: #ff6666;
+}
+
+#confirm-but:hover {
+    background-color: #689e45;
+}
+
+#delete-but:hover {
+    background-color: #f84f4f;
+}
+
+#confirm-but:active {
+    background-color: #5f8e3f;
+}
+
+#delete-but:active {
+    background-color: #de3d3d;
+}
