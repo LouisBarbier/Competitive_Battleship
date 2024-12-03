@@ -1,0 +1,64 @@
+body {
+    background-color: var(--body-bg-color);
+    
+    --bs-body-bg: var(--tx-color-inv);
+    --bs-border-color: var(--bd-color);
+    --bs-heading-color: var(--tx-color);
+    --bs-body-color: var(--tx-color);
+    --bs-secondary-color: var(--tx-color);
+    --bs-emphasis-color: var(--tx-color);
+    --bs-link-color: var(--tx-color);
+    --bs-link-hover-color: var(--tx-color);
+    --bs-card-cap-bg: var(--small-darker);
+    --bs-tertiary-bg: var(--small-darker);
+    --bs-border-color-translucent: var(--darker);
+
+}
+
+header {
+    position: sticky;
+    top: 0; z-index: 10;
+    width: 100%;
+    padding: 1.5rem;
+    border-bottom: solid 5px var(--bd-color);
+    background-color: var(--nav-bg-color);
+}
+
+.fs-4 {
+    color: var(--tx-color);
+}
+
+.nav-link {
+    border: solid 2px transparent;
+    color: var(--tx-color);
+}
+
+.nav-link:hover {
+    border: solid 2px var(--bd-color);
+    color: var(--tx-color);
+}
+
+.nav-link:active {
+    border: solid 2px var(--bd-color);
+    color: var(--tx-color);
+}
+
+.active {
+    --bs-nav-pills-link-active-color: var(--tx-color-inv);
+    --bs-nav-pills-link-active-bg: var(--bd-color);
+}
+
+#bright_mode {
+    height: 45px;
+    border-radius: 50%;
+    border: solid 2px transparent;
+    cursor: pointer;
+}
+
+#bright_mode:hover {
+    border: solid 2px var(--bd-color);
+}
+
+main {
+    padding: 1rem;
+}

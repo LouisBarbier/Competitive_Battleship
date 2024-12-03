@@ -1,0 +1,29 @@
+main {
+    background-color: var(--nav-bg-color);
+    border: solid 3px var(--bd-color);
+    border-radius: 1rem;
+    margin: 1.5rem;
+    padding: 1rem;
+}
+
+#loading-vizualizer {
+    margin: 5rem 0rem;
+    font-family: 'Aharoni', 'Arial Black', 'Arial';
+}
+
+#cancel-button {
+    border: solid 2px rgb(255, 67, 67);
+    background-color: #FF9797;
+    font-weight: bold;
+    color: black;
+}
+
+#cancel-button:hover {
+    border-color: rgb(232, 60, 60);
+    background-color: #ec8b8b;
+}
+
+#cancel-button:active {
+    border-color: rgb(196, 51, 51);
+    background-color: #d57e7e;
+}

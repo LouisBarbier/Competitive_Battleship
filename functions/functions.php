@@ -2,6 +2,8 @@
 
 include 'db.php';
 
+date_default_timezone_set('US/Eastern');
+
 // phpinfo();
 
 function isValid ($pers_id, $pers_password) {
@@ -60,11 +62,11 @@ function load_css_variables ($dark_mode) {
 function getNbOnline () {
     global $DB;
 
-    $fifteenMinAgo = date_sub(new DateTime('now'), new DateInterval('PT15M'));
+    $seconds_ago = date_format(date_sub(new DateTime('now'), new DateInterval('PT30S')), "Y-m-d H:i:s");
 
     $sql = "SELECT COUNT(*)
         FROM Person
-        WHERE pers_lastonline > '" . date_format($fifteenMinAgo, "Y-m-d H:i:s") . "'";
+        WHERE pers_lastmatchmaking > '$seconds_ago'";
 
     // echo $sql;
 
@@ -154,11 +156,9 @@ function register ($pers_firstname, $pers_lastname, $pers_email, $pers_username,
         if($DB->query($sql) == true){
             // echo "Table Person unlocked<br>";
         } else {
-            echo"ERREUR, problème rencontré lors du dés-verrouillage de la table<br/> Réponce de la base de donnée : ";
             echo $DB->error;
         }
     } else {
-        echo"ERREUR, problème rencontré lors du verrouillage des tables<br/> Réponce de la base de donnée : ";
         echo $DB->error;
 
         return -1;
