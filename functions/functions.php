@@ -6,6 +6,7 @@ date_default_timezone_set('US/Eastern');
 
 // phpinfo();
 
+// Test if a combinaison pers_id + pers_password exist in the database
 function isValid ($pers_id, $pers_password) {
     global $DB;
 
@@ -33,6 +34,7 @@ function isValid ($pers_id, $pers_password) {
     return $connected;
 }
 
+// Load the CSS variables with the correct values depending of if the site is in dark mode or not
 function load_css_variables ($dark_mode) {
     if ($dark_mode) {
         echo ":root {
@@ -59,6 +61,7 @@ function load_css_variables ($dark_mode) {
     }
 }
 
+// Get the number of people currently looking for a player in the matchmaking page
 function getNbOnline () {
     global $DB;
 
@@ -77,6 +80,7 @@ function getNbOnline () {
     return $nb_online;
 }
 
+// Check if a username already exist in the database
 function existUsername ($pers_username) {
     global $DB;
 
@@ -100,6 +104,7 @@ function existUsername ($pers_username) {
     }
 }
 
+// Check if an email already exist in the database
 function existEmail ($pers_email) {
     global $DB;
 
@@ -123,6 +128,7 @@ function existEmail ($pers_email) {
     }
 }
 
+// Add a person to the database
 function register ($pers_firstname, $pers_lastname, $pers_email, $pers_username, $pers_password, $pers_photo = null) {
     global $DB;
 
@@ -167,6 +173,7 @@ function register ($pers_firstname, $pers_lastname, $pers_email, $pers_username,
     return $pers_id;
 }
 
+// Update a user of the database
 function update_person ($pers_id, $pers_firstname, $pers_lastname, $pers_email, $pers_username) {
     global $DB;
 
@@ -175,6 +182,7 @@ function update_person ($pers_id, $pers_firstname, $pers_lastname, $pers_email, 
     $DB->query($sql);
 }
 
+// Update the profile picture of a user
 function update_profile_picture ($pers_id, $pers_photo = null) {
     global $DB;
 
@@ -189,6 +197,7 @@ function update_profile_picture ($pers_id, $pers_photo = null) {
     $DB->query($sql);
 }
 
+// Delete a user from the database
 function delete_user ($pers_id) {
     global $DB;
 
@@ -197,6 +206,7 @@ function delete_user ($pers_id) {
     $DB->query($sql);
 }
 
+// Load $quantity users starting from $offset with $conditions and $condition_nbbattle are true
 function load_more ($quantity, $offset, $conditions=array(), $condition_nbbattle=0) {
     global $DB;
 
@@ -224,6 +234,7 @@ function load_more ($quantity, $offset, $conditions=array(), $condition_nbbattle
     return $DB->query($sql);
 }
 
+// Get a user from the database using his/her $id
 function getUser ($id) {
     global $DB;
 

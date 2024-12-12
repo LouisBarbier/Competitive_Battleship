@@ -20,10 +20,13 @@ document.getElementById('submit-but').addEventListener('click', function(){
         .then((dataJSON) => {
             // console.log(dataJSON);
 
+            // The combinaison Email+Password or Username+Password is valid => We change the user cookie and close the login page
             if (dataJSON.result.valid == '1') {
                 window.opener.setUser(dataJSON.result.person);
                 window.close();
-            } else {
+            }
+            // The combinaison Email+Password or Username+Password is invalid => We show the error message to the user
+            else {
                 document.getElementById("error-msg").style.display = 'block';
                 document.getElementById("error-msg").style.visibility = 'visible';
             }

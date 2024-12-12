@@ -15,6 +15,7 @@ if (isset($_COOKIE["user"])) {
     $connected = false;
 }
 
+// If the user is not connected we refuse the access to this page
 if (!$connected) {
     header("Location: index.php");
     die();

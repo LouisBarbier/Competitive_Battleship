@@ -17,6 +17,7 @@ if (isset($_COOKIE["user"])) {
     $connected = false;
 }
 
+// If the user is not connected or not an admin we refuse the access to this page
 if (!$connected || !$pers_isadmin) {
 // if (false) {
     header("Location: index.php");

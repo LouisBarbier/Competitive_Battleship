@@ -15,8 +15,9 @@ if (isset($_COOKIE["user"])) {
     $connected = false;
 }
 
-// if (!$connected) {
-if (false) {
+// If the user is not connected we refuse the access to this page
+if (!$connected) {
+// if (false) {
     header("Location: index.php");
     die();
 }
@@ -89,6 +90,8 @@ if (false) {
             </li>
         </ul>
     </header>
+
+    <main class="container text-center">NOT FINISHED</main>
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center mt-auto">
         <div class="col-md-4 d-flex align-items-center">

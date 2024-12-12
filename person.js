@@ -15,13 +15,16 @@ var timerEmail = null;
 
 // Check if someone already has this username
 function checkUsername () {
+    // No username entered => We don't check
     if (usernameElem.value == "" || usernameElem.value == null) {
         document.getElementById('username-valid').value = false;
         usernameElem.classList.remove("is-invalid");
         usernameStatus.textContent = "No username";
         usernameStatus.classList.remove("red");
         usernameStatus.classList.remove("green");
-    } else if (usernameElem.value == originalUsername) {
+    }
+    // Same username => We don't check (because if we do the username will be taken (by this user))
+    else if (usernameElem.value == originalUsername) {
         document.getElementById('username-valid').value = true;
         usernameStatus.textContent = "Username free";
         usernameStatus.classList.remove("red");
@@ -68,18 +71,22 @@ function checkUsername () {
 }
 
 usernameElem.addEventListener('keyup', function(){
+    // No timeout set => We set a timeout to check the username in 1 second
     if (timerUsername == null) {
         timerUsername = setTimeout(checkUsername, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerUsername);
         timerUsername = setTimeout(checkUsername, 1000);
     }
 });
 usernameElem.addEventListener('change', function(){
+    // No timeout set => We set a timeout to check the username in 1 second
     if (timerUsername == null) {
         timerUsername = setTimeout(checkUsername, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerUsername);
         timerUsername = setTimeout(checkUsername, 1000);
@@ -88,13 +95,16 @@ usernameElem.addEventListener('change', function(){
 
 // Check if someone already has this email
 function checkEmail () {
+    // No email entered => We don't check
     if (emailElem.value == "" || emailElem.value == null) {
         document.getElementById('email-valid').value = false;
         emailStatus.textContent = "No email";
         emailStatus.classList.remove("red");
         emailStatus.classList.remove("green");
         emailElem.classList.remove("is-invalid");
-    } else if (emailElem.value == originalEmail) {
+    }
+    // Same email => We don't check (because if we do the email will be taken (by this user))
+    else if (emailElem.value == originalEmail) {
         document.getElementById('email-valid').value = true;
         emailStatus.textContent = "Email free";
         emailStatus.classList.remove("red");
@@ -141,20 +151,24 @@ function checkEmail () {
 }
 
 emailElem.addEventListener('keyup', function(){
+    // No timeout set => We set a timeout to check the email in 1 second
     if (timerEmail == null) {
         timerEmail = setTimeout(checkEmail, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
-        window.clearTimeout(timerUsername);
+        window.clearTimeout(timerEmail);
         timerEmail = setTimeout(checkEmail, 1000);
     }
 });
 emailElem.addEventListener('change', function(){
+    // No timeout set => We set a timeout to check the email in 1 second
     if (timerEmail == null) {
         timerEmail = setTimeout(checkEmail, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
-        window.clearTimeout(timerUsername);
+        window.clearTimeout(timerEmail);
         timerEmail = setTimeout(checkEmail, 1000);
     }
 });
@@ -162,6 +176,7 @@ emailElem.addEventListener('change', function(){
 
 // Place the input profile-picture into the image
 function changeProfilePicture () {
+    // Code taken from https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded on nkron's answer
     let file = document.getElementById('profile-picture').files[0];
 
     if (file) {
@@ -189,6 +204,7 @@ document.getElementById('modification-form').addEventListener('submit', function
     }
 });
 
+// Ask the admin if he is sure he want to delete this account before deleting it (if the anwser is yes)
 document.getElementById('delete-but').addEventListener('click', function(){
     if (confirm("Are you sure you want to delete " + originalUsername + "'s account ?")) {
         document.getElementById('delete-user').value = 1;
@@ -196,6 +212,7 @@ document.getElementById('delete-but').addEventListener('click', function(){
     }
 });
 
+// Here so if we click the refresh button after entering some data the 'validity visualizers' will still be correct
 window.onload = function () {
     checkUsername();
     checkEmail();

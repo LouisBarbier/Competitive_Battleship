@@ -15,6 +15,7 @@ var timerPassword = null;
 
 // Check if someone already has this username
 function checkUsername () {
+    // No username entered => We don't check
     if (usernameElem.value == "" || usernameElem.value == null) {
         document.getElementById('username-valid').value = false;
         usernameElem.classList.remove("is-invalid");
@@ -62,18 +63,22 @@ function checkUsername () {
 }
 
 usernameElem.addEventListener('keyup', function(){
+    // No timeout set => We set a timeout to check the username in 1 second
     if (timerUsername == null) {
         timerUsername = setTimeout(checkUsername, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerUsername);
         timerUsername = setTimeout(checkUsername, 1000);
     }
 });
 usernameElem.addEventListener('change', function(){
+    // No timeout set => We set a timeout to check the username in 1 second
     if (timerUsername == null) {
         timerUsername = setTimeout(checkUsername, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerUsername);
         timerUsername = setTimeout(checkUsername, 1000);
@@ -82,6 +87,7 @@ usernameElem.addEventListener('change', function(){
 
 // Check if someone already has this email
 function checkEmail () {
+    // No email entered => We don't check
     if (emailElem.value == "" || emailElem.value == null) {
         document.getElementById('email-valid').value = false;
         emailStatus.textContent = "No email";
@@ -129,20 +135,24 @@ function checkEmail () {
 }
 
 emailElem.addEventListener('keyup', function(){
+    // No timeout set => We set a timeout to check the email in 1 second
     if (timerEmail == null) {
         timerEmail = setTimeout(checkEmail, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
-        window.clearTimeout(timerUsername);
+        window.clearTimeout(timerEmail);
         timerEmail = setTimeout(checkEmail, 1000);
     }
 });
 emailElem.addEventListener('change', function(){
+    // No timeout set => We set a timeout to check the email in 1 second
     if (timerEmail == null) {
         timerEmail = setTimeout(checkEmail, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
-        window.clearTimeout(timerUsername);
+        window.clearTimeout(timerEmail);
         timerEmail = setTimeout(checkEmail, 1000);
     }
 });
@@ -150,6 +160,7 @@ emailElem.addEventListener('change', function(){
 
 // Place the input profile-picture into the image
 function changeProfilePicture () {
+    // Code taken from https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded on nkron's answer
     let file = document.getElementById('profile-picture').files[0];
 
     if (file) {
@@ -177,36 +188,44 @@ function checkPasswords () {
 }
 
 passwordElem.addEventListener('keyup', function () {
+    // No timeout set => We set a timeout to check the passwords in 1 second
     if (timerPassword == null) {
         timerPassword = setTimeout(checkPasswords, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerPassword);
         timerPassword = setTimeout(checkPasswords, 1000);
     }
 });
 passwordElem.addEventListener('change', function () {
+    // No timeout set => We set a timeout to check the passwords in 1 second
     if (timerPassword == null) {
         timerPassword = setTimeout(checkPasswords, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerPassword);
         timerPassword = setTimeout(checkPasswords, 1000);
     }
 });
 confirmElem.addEventListener('keyup', function () {
+    // No timeout set => We set a timeout to check the passwords in 1 second
     if (timerPassword == null) {
         timerPassword = setTimeout(checkPasswords, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerPassword);
         timerPassword = setTimeout(checkPasswords, 1000);
     }
 });
 confirmElem.addEventListener('change', function () {
+    // No timeout set => We set a timeout to check the passwords in 1 second
     if (timerPassword == null) {
         timerPassword = setTimeout(checkPasswords, 1000);
     }
+    // timeout already set => We reset the timeout
     else {
         window.clearTimeout(timerPassword);
         timerPassword = setTimeout(checkPasswords, 1000);
@@ -229,7 +248,7 @@ document.getElementById('registration-form').addEventListener('submit', function
     }
 });
 
-
+// Here so if we click the refresh button after entering some data the 'validity visualizers' will still be correct
 window.onload = function () {
     checkUsername();
     checkEmail();

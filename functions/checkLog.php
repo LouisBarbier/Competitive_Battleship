@@ -15,7 +15,7 @@ if (str_contains($json['id'], '@')) { // it's an email
     $condition = "pers_username = '" . $json['id'] . "'";
 }
 
-$sql = "SELECT pers_id,pers_password, pers_username, pers_firstname, pers_lastname, pers_email, pers_isadmin, pers_photo, pers_score
+$sql = "SELECT pers_id, pers_password, pers_username, pers_firstname, pers_lastname, pers_email, pers_isadmin, pers_photo, pers_score
 		FROM Person
 		WHERE $condition AND pers_password = '" . $json['password'] . "'";
 

@@ -14,6 +14,7 @@ if (rankMin < 0) {
     rankMin = 0;
 }
 
+// Look for other players that are searching a battle
 function lookForPlayer () {
     rankMinElem.textContent = rankMin;
     rankMaxElem.textContent = rankMax;
@@ -36,14 +37,17 @@ function lookForPlayer () {
             return response.json();
         })
         .then((dataJSON) => {
-            console.log(dataJSON);
+            // console.log(dataJSON);
 
+            // Player found => We start the battle
             if (dataJSON.result.found === '1') {
                 if (dataJSON.result.battle !== '-1') {
                     interval = null;
                     window.location.href = "battle.php?id=" + dataJSON.result.battle;
                 }
-            } else {
+            }
+            // No player found => We increase the rank range
+            else {
                 rankMin -= 10;
                 rankMax += 10;
 
@@ -56,10 +60,7 @@ function lookForPlayer () {
         .catch((error) => console.log(error));
 }
 
-
-
-var interval = setInterval(lookForPlayer, 10000);
-
+// Remove the user from the pool of users looking for a battle before leaving the matchmaking page
 window.addEventListener("beforeunload", function (event) {
     interval = null;
 
@@ -83,6 +84,10 @@ window.addEventListener("beforeunload", function (event) {
         });
 });
 
+var interval = null;
+
 window.onload = function () {
     lookForPlayer();
+    
+    interval = setInterval(lookForPlayer, 10000);
 };

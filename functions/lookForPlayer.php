@@ -23,11 +23,13 @@ if ($queryResult=$DB->query($sql)) {
 
     $pers_lastmatchmaking = $queryResult->fetch_row()[0];
 
+    // if $pers_lastmatchmaking == null either we just started to look for players or another player found us
     if ($pers_lastmatchmaking == null) {
         $sql = "SELECT bat_id FROM Battle
             WHERE (bat_player1 = $id OR bat_player2 = $id) AND bat_start >= '$seconds_ago'
             ORDER BY bat_start DESC LIMIT 1";
 
+        // if a battle have been started in the last 30 seconds then it was probably that another player found us
         if ($queryResult=$DB->query($sql)) {
             $bat_id = $queryResult->fetch_row();
 
@@ -58,12 +60,13 @@ if ($search) {
             ORDER BY pers_lastmatchmaking ASC
             LIMIT 1";
     
-    $data["sql"] = $sql;
+    // $data["sql"] = $sql;
     
     if ($queryResult=$DB->query($sql)) {
     
         $opponant = $queryResult->fetch_assoc();
     
+        // An opponant has been found => We create a battle between the two player
         if (!empty($opponant)) {
 
             $sql = "LOCK TABLES Battle WRITE, Person WRITE;";
@@ -72,6 +75,7 @@ if ($search) {
                 
                 // Tables Battle and Person Locked
             
+                // We set pers_lastmatchmaking to NULL for the two player so they are not in the matchmaking pool anymore
                 $sql = "UPDATE Person SET pers_lastmatchmaking = NULL WHERE pers_id = $id OR pers_id = " . $opponant["pers_id"];
         
                 $DB->query($sql);
@@ -92,7 +96,7 @@ if ($search) {
                 $sql = "UNLOCK TABLES;";
             
                 if($DB->query($sql) == true){
-                    // Table Battle unlocked
+                    // Table Battle and Person unlocked
                 } else {
                     echo $DB->error;
                 }
@@ -103,7 +107,9 @@ if ($search) {
             }
     
             $data["result"]["found"] = "1";
-        } else {
+        } 
+        // No opponant has been found => We update the user pers_lastmatchmaking so we know they are still looking for an opponant
+        else {
             $sql = "UPDATE Person SET pers_lastmatchmaking = '" . date_format(new DateTime(), "Y-m-d H:i:s") . "' WHERE pers_id = $id";
     
             $DB->query($sql);

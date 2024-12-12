@@ -15,6 +15,7 @@ if (isset($_COOKIE["user"])) {
     $connected = false;
 }
 
+// If the user is already connected we refuse the access to this page (because he already have an account)
 if ($connected) {
 // if (false) {
     header("Location: index.php");

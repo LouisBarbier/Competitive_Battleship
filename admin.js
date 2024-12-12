@@ -38,15 +38,18 @@ var loaded = true;
 
 const url = "./functions/loadMore.php";
 
+// Add zeros before text until the resulting text is wantedLength long
 function add0Until (text, wantedLength) {
     return '0'.repeat(wantedLength - text.length) + text;
 }
 
+// Add a new user to the users list
 function addNewUser (user){
     let newUser = document.createElement('div');
     newUser.className = 'col mb-4';
 
     let newUserContent = "";
+    // template_user contain multiple parts separated by @s. Some of which (pers_id, pers_photo, ...) are replace by users data.
     for (user_part of template_user) {
         switch (user_part) {
             case 'pers_id':
@@ -93,8 +96,9 @@ function addNewUser (user){
     currently_loaded++;
 }
 
+// Select the next users form the database
 function loadMore () {
-    console.log('loading more');
+    // console.log('loading more');
 
 	var fetchOptions = {
 		method: "POST",
@@ -124,7 +128,9 @@ function loadMore () {
         });
 }
 
+// We don't want to load the entire database so instead we load more of it once the user reach 90% of the page
 window.addEventListener('scroll',()=>{
+    // Code inspired by John Chioma's answer on https://stackoverflow.com/questions/5020351/how-to-load-the-web-page-content-based-on-user-scrolling
     const {scrollTop,clientHeight,scrollHeight} = document.documentElement;
     if ((scrollTop+clientHeight)>=scrollHeight*0.9 && loaded) {
         loaded = false;
